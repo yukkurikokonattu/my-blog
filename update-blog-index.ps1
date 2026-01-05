@@ -1,4 +1,8 @@
-# update-blog-index.ps1
+﻿# update-blog-index.ps1
+
+# Set console encoding to UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
 
 function Update-Index {
     param (
@@ -87,3 +91,4 @@ Update-Index -FilePattern "news*.html" `
     -TitlePrefixToRemove "お知らせ\s*-\s*"
 
 Write-Host "All updates complete."
+exit 0

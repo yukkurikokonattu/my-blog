@@ -8,10 +8,14 @@
     - [x] Plan HTML/JS updates for `announcements.html`. <!-- id: 5 -->
     - [x] Plan HTML/JS updates for `index.html` (latest announcements). <!-- id: 6 -->
     - [x] Plan automation script updates. <!-- id: 7 -->
-- [/] Implementation <!-- id: 8 -->
+- [x] Implementation <!-- id: 8 -->
     - [x] Create/refactor script to generate `announcements.js`. <!-- id: 9 -->
     - [x] Update `announcements.html`. <!-- id: 10 -->
-    - [ ] Create `publish_site.bat` for one-click updates. <!-- id: 11 -->
+    - [x] Create `publish_site.bat` for one-click updates. <!-- id: 11 -->
+    - [x] Debug `publish_site.bat` failure. <!-- id: 19 -->
+    - [x] Create `news_template.html` (matching blog style). <!-- id: 20 -->
+    - [x] Create `create_announcement.bat` and script. <!-- id: 21 -->
+    - [x] Debug `create_announcement.ps1` syntax error. <!-- id: 22 -->
 - [ ] Documentation / Help <!-- id: 17 -->
     - [ ] Explain GitHub Pages setup. <!-- id: 18 -->
     - [ ] Update `index.html`. <!-- id: 11 -->

@@ -1,21 +1,21 @@
 ﻿const blogPosts = [
     {
-        title: "ブログ記事 - おっぱい",
+        title: "おっぱい",
         url: "post7.html",
         date: "26/01/05/22:01"
     },
     {
-        title: "ブログ記事 - エンコーディングテスト",
+        title: "エンコーディングテスト",
         url: "post5.html",
         date: "26/01/05/21:59"
     },
     {
-        title: "ブログ記事 - テスト",
+        title: "テスト",
         url: "post4.html",
         date: "26/01/05/20:45"
     },
     {
-        title: "ブログ記事 - このサイトは実は...",
+        title: "このサイトは実は...",
         url: "post3.html",
         date: "26/01/05/20:30"
     },
