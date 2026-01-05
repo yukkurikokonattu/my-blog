@@ -1,0 +1,8 @@
+# デザイン刷新タスク: 明るいデザインとダークモードの実装
+
+- [ ] 計画の作成と承認 ([implementation_plan.md](file:///c:/Users/maiku/.gemini/antigravity/brain/ff8911b8-1acb-499b-9d7b-1a9dd1a04249/implementation_plan.md))
+- [/] ライトモードをデフォルトとした配色とフォントの選定
+- [ ] 文字の縁取りスタイルの追加
+- [ ] ダークモードの切り替えロジックとトグルボタンの実装
+- [ ] 各HTMLファイル（index, announcements, blog, post_template）への適用
+- [ ] 動作確認と最終調整

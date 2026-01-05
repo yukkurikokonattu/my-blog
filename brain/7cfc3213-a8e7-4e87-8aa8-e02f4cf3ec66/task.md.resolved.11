@@ -1,0 +1,6 @@
+# Task: Automate Blog Index Updates
+
+- [x] Create [update-blog-index.ps1](file:///C:/Users/maiku/.gemini/antigravity/update-blog-index.ps1) to regenerate [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) <!-- id: 0 -->
+- [x] Implement logic to preserve existing dates and fallback to file creation time <!-- id: 1 -->
+- [x] Run the script to register [post6.html](file:///C:/Users/maiku/.gemini/antigravity/post6.html) automatically <!-- id: 2 -->
+- [x] Verify [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) is correctly updated <!-- id: 3 -->

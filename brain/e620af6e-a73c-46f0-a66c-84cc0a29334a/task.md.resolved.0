@@ -1,0 +1,10 @@
+# タスク: 新しいブログ記事を index.html に表示させる
+
+- [/] 調査
+    - [ ] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) と [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) の構造を確認する
+    - [ ] [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) の内容を確認する
+- [ ] 修正
+    - [ ] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) に新しい記事へのリンクを追加する
+    - [ ] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) に新しい記事へのリンクを追加する (必要であれば)
+- [ ] 検証
+    - [ ] ブラウザで表示を確認する

@@ -1,0 +1,31 @@
+# ブログ表示機能の更新完了
+
+[index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) および [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を更新し、新しく作成した [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) が表示されるようにしました。
+
+## 実施した変更
+
+### ホームページ ([index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)) とブログ一覧 ([blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html))
+- 記事の投稿日時を自動表示するスクリプトを適用しました。
+- 記事の要約文（タイトル下の説明）を削除し、スッキリとした見た目にしました。
+
+### 個別記事 ([post1.html](file:///c:/Users/maiku/.gemini/antigravity/post1.html) 〜 [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html)) とテンプレート
+- ページ下部の「ブログ一覧に戻る」リンクを、押しやすいボタン形式に変更しました。
+
+### お知らせページ ([announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html))
+- `details` タグを廃止し、内容が最初から表示されるシンプルな形式に変更しました。
+
+### ブログ自動表示システム [NEW]
+- [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) を作成し、記事データ（タイトル、URL、日付）を一括管理するようにしました。
+- [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) は自動で最新の記事を表示し、[blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) は全記事をリストアップします。
+
+## 検証結果
+
+### ページ構成の確認
+- [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) に最新記事のカードが表示されていることを確認。
+- [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) に全3記事がリストアップされていることを確認。
+- 各個別記事に「ブログ一覧に戻る」ボタンが表示されていることを確認。
+
+### 動作確認
+- 各ページのボタンから個別記事（[post1.html](file:///c:/Users/maiku/.gemini/antigravity/post1.html), [post2.html](file:///c:/Users/maiku/.gemini/antigravity/post2.html), [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html)）へ正しく遷移できることを確認。
+- 個別記事の「ブログ一覧に戻る」ボタンをクリックして、一覧ページに正しく戻れることを確認。
+- テーマ切り替え（ライト/ダーク）が引き続き正常に動作することを確認。

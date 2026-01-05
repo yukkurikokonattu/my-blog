@@ -1,0 +1,217 @@
+/* style.css – 公式サイト共通デザイン */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap');
+
+:root {
+  /* Light Mode (Default) */
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #2d3748;
+  --accent: #3182ce;
+  --outline-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --font: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
+[data-theme="dark"] {
+  --bg: #1a202c;
+  --card-bg: #2d3748;
+  --text: #e2e8f0;
+  --accent: #63b3ed;
+  --outline-color: #1a202c;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* 文字の縁取り効果 (Text Outline) */
+.text-outline {
+  text-shadow:
+    -1px -1px 0 var(--outline-color),
+    1px -1px 0 var(--outline-color),
+    -1px 1px 0 var(--outline-color),
+    1px 1px 0 var(--outline-color),
+    0 2px 4px var(--shadow-color);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.navbar {
+  background: var(--card-bg);
+  padding: 1rem;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: var(--card-bg);
+}
+
+.container,
+.main {
+  flex: 1;
+  max-width: 800px;
+  margin: 2rem auto;
+  width: 90%;
+}
+
+.post-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px var(--shadow-color);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.post-date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+/* Collapsible post styling */
+
+details {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--accent);
+  padding: 0.3rem 0;
+}
+
+/* YouTube Video Container */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Subscribe Button */
+.subscribe-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ff0000;
+  /* YouTube Red */
+  color: white !important;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3);
+  margin-top: 1rem;
+}
+
+.subscribe-btn:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
+}
+
+.post-content p {
+  margin: 0.5rem 0;
+}

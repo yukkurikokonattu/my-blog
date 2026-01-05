@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "ブログ記事の管理を「JSによる自動読み込み」に変更するためのタスクリストです。`blog-posts.js` の作成から、各ページへの統合まで進めます。",
+  "updatedAt":  "2026-01-05T11:42:41.613028700Z",
+  "version":  "8"
+}

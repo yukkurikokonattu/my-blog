@@ -1,0 +1,24 @@
+# ブログ記事を index.html に表示させる実装プラン
+
+[post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) などの新しいブログ記事が [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) で見られない問題を解決するため、ホームページに「最新のブログ記事」セクションを追加し、ブログ一覧ページも更新します。
+
+## 変更内容
+
+### ホームページ ([index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html))
+
+- [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
+    - 最新の記事（[post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html)）へのリンクを含む「最新のブログ記事」セクションを追加します。
+
+---
+
+### ブログ一覧ページ ([blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html))
+
+- [MODIFY] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html)
+    - 記事の一覧を整理し、[post1.html](file:///c:/Users/maiku/.gemini/antigravity/post1.html), [post2.html](file:///c:/Users/maiku/.gemini/antigravity/post2.html), [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) へのリンク（または各記事の概要と詳細ページへの導線）を追加します。
+
+## 検証プラン
+
+### 手動確認
+1. ブラウザで [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) を開き、新しく追加されたブログ記事のセクションが表示されていることを確認します。
+2. そのリンクをクリックして [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) に正しく遷移することを確認します。
+3. [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を開き、すべての記事（1, 2, 3）がリストされていることを確認します。

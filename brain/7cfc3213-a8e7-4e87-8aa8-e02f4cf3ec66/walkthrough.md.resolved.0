@@ -1,0 +1,38 @@
+# Fixing Text Encoding Issues
+
+[create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1)スクリプトがシステムデフォルトのエンコーディング（Shift-JISなど）でファイルを保存していた問題を修正しました。また、文字化けしていた既存の[blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js)を修復しました。
+
+## Changes
+
+### [create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1)
+
+- ファイルの読み書き時に `-Encoding UTF8` を明示的に指定するように変更しました。
+- スクリプトファイル自体を UTF-8 (BOM付き) で保存し直し、PowerShell での実行時の文字化けやエラーを防ぐようにしました。
+
+```powershell
+# Before
+(Get-Content $nextFile) ... | Set-Content $nextFile
+
+# After
+(Get-Content $nextFile -Encoding UTF8) ... | Set-Content $nextFile -Encoding UTF8
+```
+
+### [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js)
+
+- 過去のテスト実行による文字化けエントリを削除し、正しい記事情報を復元しました。
+- UTF-8で保存し直しました。
+
+## Verification Results
+
+### Automated Test
+`create-post.ps1 -title "エンコーディングテスト"` を実行し、以下の点を確認しました。
+
+1. **スクリプトがエラーなく終了すること**
+   - 以前発生していた `UnauthorizedAccess` や `IOException`、パラメータバインディングエラーが解消されました。
+2. **生成されたHTMLファイル ([post5.html](file:///C:/Users/maiku/.gemini/antigravity/post5.html)) が正しく表示されること**
+   - 文字化けせずにタイトルと本文が表示されます。
+3. **[blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) が正しく更新されること**
+   - 新しいエントリが追加され、既存のエントリも文字化けしていないことを確認しました。
+
+### Screenshot
+*（自動テストのためスクリーンショットはありませんが、ファイル内容の確認済み）*

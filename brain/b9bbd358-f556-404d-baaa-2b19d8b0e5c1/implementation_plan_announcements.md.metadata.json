@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan to refactor announcements to use collapsible cards within the same page, each with a distinct background feel.",
+  "updatedAt":  "2026-01-05T09:59:59.066999700Z"
+}

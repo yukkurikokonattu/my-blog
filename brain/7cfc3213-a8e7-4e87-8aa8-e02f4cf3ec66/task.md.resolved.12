@@ -1,0 +1,5 @@
+# Task: Prepare for GitHub
+
+- [ ] Create `.gitignore` to exclude unnecessary files <!-- id: 0 -->
+- [ ] Create `README.md` explaining how to use scripts and publish <!-- id: 1 -->
+- [ ] Implement GitHub Actions workflow (Optional, if requested) <!-- id: 2 -->

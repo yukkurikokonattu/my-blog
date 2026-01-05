@@ -1,0 +1,26 @@
+# ブログ作成自動化ツールの導入プラン
+
+新記事を追加する際の「HTMLファイルのコピー」と「[blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) への追記」の2ステップを、自動化スクリプトで1つにまとめます。
+
+## 変更内容
+
+### 自動作成スクリプト (`create-post.ps1`) [NEW]
+
+- [NEW] [create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1)
+    - 実行すると「記事のタイトル」を聞かれ、それを入力すると：
+        1. 次の番号（`post5.html` など）を自動で決定。
+        2. `post_template copy.html` をコピーして新規ファイルを作成。
+        3. ファイル内のタイトル（`<title>` や `<h1>`）を自動置換。
+        4. [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) の一番上に新しい記事情報を自動で追記。
+
+### AIワークフロー (`.agent/workflows/create-post.md`) [NEW]
+
+- [NEW] [.agent/workflows/create-post.md](file:///c:/Users/maiku/.gemini/antigravity/.agent/workflows/create-post.md)
+    - 「記事を書いて」と頼まれたときに、AIがこの手順を自動で行うためのマニュアルを作成します。
+
+## 検証プラン
+
+### 動作確認
+1. `create-post.ps1` を実行（私が代わりにやることも可能です）。
+2. `post5.html` が生成され、[blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) の先頭にデータが増えていることを確認。
+3. ブラウザでホーム画面を確認し、新しい記事が出ていることを確認。

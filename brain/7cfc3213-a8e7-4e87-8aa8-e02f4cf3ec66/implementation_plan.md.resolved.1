@@ -1,0 +1,16 @@
+# Automate Blog Post Registration
+
+To respond to the user's request for automation, we will create a script that scans the directory for blog posts and rebuilds the index file ([blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js)). This allows "posting" (registering) entries simply by creating the HTML file and running this update script.
+
+## Proposed Changes
+
+### [NEW] [update-blog-index.ps1](file:///C:/Users/maiku/.gemini/antigravity/update-blog-index.ps1)
+- Scans for `post*.html`.
+- Extracts the title from the `<title>` tag.
+- Preserves existing dates from [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) if available to prevent existing posts from having their dates reset.
+- Uses file creation time for new posts (like [post6.html](file:///C:/Users/maiku/.gemini/antigravity/post6.html) if not yet indexed).
+- Generates a fresh [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) sorted by post number (descending).
+
+## Verification Plan
+1. Run `.\update-blog-index.ps1`.
+2. Check [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) to ensure `post6` is present and other posts are preserved.

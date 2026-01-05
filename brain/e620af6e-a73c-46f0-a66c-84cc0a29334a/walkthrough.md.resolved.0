@@ -1,0 +1,25 @@
+# ブログ表示機能の更新完了
+
+[index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) および [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を更新し、新しく作成した [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html) が表示されるようにしました。
+
+## 実施した変更
+
+### ホームページ ([index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html))
+- 「最新のブログ記事」セクションを追加しました。
+- 記事の投稿日時を自動表示するスクリプトを [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) にも適用しました。
+
+### ブログ一覧ページ ([blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html))
+- 記事のリストを更新し、以下の3記事すべてに「記事を読む」ボタンを追加しました：
+  1. **このサイトは実は...** ([post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html))
+  2. **このサイトの話** ([post2.html](file:///c:/Users/maiku/.gemini/antigravity/post2.html))
+  3. **新年の挨拶と今後の予定** ([post1.html](file:///c:/Users/maiku/.gemini/antigravity/post1.html))
+
+## 検証結果
+
+### ページ構成の確認
+- [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) に最新記事のカードが表示されていることを確認。
+- [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) に全3記事がリストアップされていることを確認。
+
+### 動作確認
+- 各ページのボタンから個別記事（[post1.html](file:///c:/Users/maiku/.gemini/antigravity/post1.html), [post2.html](file:///c:/Users/maiku/.gemini/antigravity/post2.html), [post3.html](file:///c:/Users/maiku/.gemini/antigravity/post3.html)）へ正しく遷移できることを確認。
+- テーマ切り替え（ライト/ダーク）が引き続き正常に動作することを確認。

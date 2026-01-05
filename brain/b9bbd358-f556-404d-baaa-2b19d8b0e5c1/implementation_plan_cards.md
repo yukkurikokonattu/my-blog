@@ -1,0 +1,40 @@
+# Individual Card-Based Post Layout
+
+## Goal Description
+Redesign the announcements and blog pages so that each post is its own visually distinct "card" with its own background, rather than being items in a single list. This fulfills the user's request for "separating by post" and "different backgrounds per post" while keeping everything on the same page.
+
+## Proposed Changes
+---
+### Styles (`style.css`)
+#### [MODIFY] style.css
+- Update `.container` to act as a wrapper for multiple cards.
+- Create a `.post-card` class that provides the separate background, padding, and margin for each post.
+- Ensure the background stands out from the main page background.
+
+---
+### Announcements Page (`announcements.html`)
+#### [MODIFY] announcements.html
+- Remove the `<ul>` list.
+- Wrap each announcement in a `<div class="post-card">`.
+- Include `<details>` inside each card for collapsible content.
+- Add placeholders for the auto-date script.
+
+---
+### Blog Page (`blog.html`)
+#### [MODIFY] blog.html
+- Revert the local file link approach.
+- Implement the same `.post-card` structure as the announcements page.
+- Ensure each blog post is a distinct card on the same page.
+
+---
+### JavaScript (Common)
+- Update the script to find all elements with a specific class (e.g., `.auto-date`) and populate them with the current time in `YY/MM/DD/HH:MM` format.
+
+## Verification Plan
+### Automated Tests
+- Check that `announcements.html` and `blog.html` contain multiple `.post-card` elements.
+- Verify that each card has the expected date format populated.
+
+### Manual Verification
+- View the pages to ensure each post looks like a separate "block" or "island" on the page background.
+- Test the expand/collapse functionality for each card independently.

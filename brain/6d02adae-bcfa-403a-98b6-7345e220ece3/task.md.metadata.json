@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "文字化けを修正するためのタスクリスト。調査から修正、確認までを段階的に行います。",
+  "updatedAt":  "2026-01-05T11:52:31.157317100Z"
+}

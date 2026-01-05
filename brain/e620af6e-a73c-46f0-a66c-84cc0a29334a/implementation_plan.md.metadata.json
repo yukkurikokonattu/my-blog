@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "ブログ作成の全手順（ファイルコピー、JS登録）を自動化するツールを導入します。WindowsのPowerShellを利用し、コマンド一つで新しい記事を用意できるようにします。",
+  "updatedAt":  "2026-01-05T11:48:09.860297200Z",
+  "version":  "4"
+}

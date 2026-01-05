@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ - ゆっくりココナッツ 公式サイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="announcements.html">お知らせ</a></li>
+                <li><a href="blog.html" class="active">ブログ</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
+                <span id="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+    <main class="container">
+        <h1 class="text-outline">ブログ</h1>
+        <div id="blog-list-container">
+            <!-- JavaScriptでここに記事リストが入ります -->
+        </div>
+    </main>
+
+    <script src="blog-posts.js"></script>
+    <script>
+        // Blog list logic
+        function loadBlogList() {
+            const container = document.getElementById('blog-list-container');
+            if (window.blogPosts) {
+                container.innerHTML = window.blogPosts.map(post => `
+                    <div class="post-card">
+                        <p class="post-date">${post.date}</p>
+                        <h2>${post.title}</h2>
+                        <div class="post-content">
+                            <p><a href="${post.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">記事を読む</a></p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        loadBlogList();
+
+        // Theme logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        root.setAttribute('data-theme', savedTheme);
+        themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        });
+
+        // Date logic
+        function updateDates() {
+            const now = new Date();
+            const pad = n => n.toString().padStart(2, '0');
+            const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
+            document.querySelectorAll('.auto-date').forEach(el => {
+                el.textContent = formatted;
+            });
+        }
+        updateDates();
+    </script>
+</body>
+
+</html>

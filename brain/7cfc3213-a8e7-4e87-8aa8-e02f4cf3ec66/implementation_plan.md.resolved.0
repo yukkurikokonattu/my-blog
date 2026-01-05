@@ -1,0 +1,38 @@
+# Fix Text Encoding in Blog Scripts
+
+The core issue is that [create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1) relies on the default PowerShell encoding (often Shift-JIS on Windows) when writing files. This causes "mojibake" (garbled text) when the files are opened as UTF-8. We will modify the script to explicitly use UTF-8.
+
+## User Review Required
+> [!IMPORTANT]
+> This change ensures all future posts and the [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) updates are written in UTF-8. Existing malformed files may need manual correction or re-creation.
+
+## Proposed Changes
+
+### Scripts
+
+#### [MODIFY] [create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1)
+- Update `Set-Content` calls to include `-Encoding UTF8`.
+- Ensure `Get-Content` is coupled with encoding awareness where necessary.
+
+```powershell
+# Before
+(Get-Content $nextFile) ... | Set-Content $nextFile
+
+# After
+(Get-Content $nextFile) ... | Set-Content $nextFile -Encoding UTF8
+```
+
+```powershell
+# Before
+$jsContent | Set-Content $jsPath
+
+# After
+$jsContent | Set-Content $jsPath -Encoding UTF8
+```
+
+## Verification Plan
+
+### Automated Tests
+1. Run `.\create-post.ps1 -title "Encoding Test"`
+2. Verify the created HTML file creates Japanese characters correctly.
+3. Verify [blog-posts.js](file:///C:/Users/maiku/.gemini/antigravity/blog-posts.js) is updated with correct characters.

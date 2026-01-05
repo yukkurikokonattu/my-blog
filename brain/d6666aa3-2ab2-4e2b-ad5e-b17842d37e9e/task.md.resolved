@@ -1,0 +1,11 @@
+# タスク: 文字化けの復旧とエンコーディング修正
+
+- [ ] 現状の確認と破損状況の詳細調査 [/]
+    - [ ] [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) の内容をターミナルで確認し、文字コードを特定
+    - [ ] 各 HTML ファイルから元の記事タイトルを抽出
+- [ ] [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) の復旧 [ ]
+    - [ ] 収集した情報に基づき、正しい UTF-8 エンコーディングで再作成
+- [ ] [create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1) の修正 [ ]
+    - [ ] `Set-Content` に `-Encoding utf8` (UTF8BOMなし) を指定するように変更
+- [ ] 動作確認 [ ]
+    - [ ] 新しい記事を作成して文字化けが発生しないことを確認

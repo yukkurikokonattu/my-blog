@@ -1,0 +1,28 @@
+# ブログ更新ガイド
+
+新しいブログ記事を追加する手順を解説します。
+
+## 1. 新しい記事ファイルを作成する
+既存の [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) をコピーして、新しいファイル（例: `post3.html`）を作成します。
+
+1. [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) を開きます。
+2. 「名前を付けて保存」で、`post3.html`（数字は連番）という名前で保存します。
+3. ファイル内の以下の部分を書き換えます。
+   - `<title>` タグの中身（ブラウザのタブに表示される名前）
+   - `<h1>記事タイトル</h1>`（ページ上部のタイトル）
+   - `<div class="post-content">` 内の文章（本文）
+
+## 2. ブログ一覧ページにリンクを追加する
+[blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を開き、新しい記事へのリンクを追加します。
+
+1. [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を開きます。
+2. `<main class="container">` 内にある `<div class="post-card">` のブロックをコピーして、一番上に追加します。
+3. コピーしたブロック内のタイトル部分を `<a href="post3.html">タイトル</a>` のように書き換えます。
+
+## 3. お知らせページにも追加する（任意）
+もし「最新ニュース」として表示したい場合は、[announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html) にも同様の手順でカードを追加してください。
+
+---
+
+**ヒント**: 
+文章の修正が終わったら、必ずファイルを「保存（Ctrl+S）」してください。ブラウザを開いている場合は「再読み込み（F5）」で内容が反映されます。

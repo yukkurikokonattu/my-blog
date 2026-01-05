@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆっくりココナッツ 公式サイト</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html" class="active">ホーム</a></li>
+                <li><a href="announcements.html">お知らせ</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
+                <span id="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+    <main class="container">
+        <h1 class="text-outline">ゆっくりココナッツ 公式サイトへようこそ</h1>
+
+        <div class="post-card">
+            <p>最新の動画をチェックしよう！</p>
+            <!-- YouTube埋め込み (プレースホルダーID: VIDEO_ID) -->
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" class="subscribe-btn">
+                    <span>▶</span> チャンネル登録をする
+                </a>
+            </div>
+        </div>
+
+        <div class="post-card">
+            <p>ここでは最新のお知らせやブログ記事をご覧いただけます。</p>
+            <p>デザインをリニューアルし、より見やすく明るくなりました！</p>
+        </div>
+
+        <h2 class="text-outline" style="margin-top: 2rem;">最新のブログ記事</h2>
+        <div id="latest-post-container">
+            <!-- JavaScriptでここに最新記事が入ります -->
+        </div>
+    </main>
+
+    <script src="blog-posts.js"></script>
+    <script>
+        // Latest post logic
+        function loadLatestPost() {
+            const container = document.getElementById('latest-post-container');
+            if (window.blogPosts && window.blogPosts.length > 0) {
+                const post = window.blogPosts[0]; // 一番上の記事を取得
+                container.innerHTML = `
+                    <div class="post-card">
+                        <p class="post-date">${post.date}</p>
+                        <h3>${post.title}</h3>
+                        <a href="${post.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">記事を読む</a>
+                    </div>
+                `;
+            }
+        }
+        loadLatestPost();
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const root = document.documentElement;
+
+        // 保存されたテーマを読み込む
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        root.setAttribute('data-theme', savedTheme);
+        themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        });
+    </script>
+</body>
+
+</html>

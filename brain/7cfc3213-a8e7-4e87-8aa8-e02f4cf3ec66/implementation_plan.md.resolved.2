@@ -1,0 +1,23 @@
+# Prepare for GitHub Publication
+
+To make the project ready for GitHub and explain the workflow to the user, we will add standard documentation and configuration files.
+
+## Proposed Changes
+
+### [NEW] [.gitignore](file:///C:/Users/maiku/.gemini/antigravity/.gitignore)
+- Exclude system files (`.DS_Store`, `Thumbs.db`).
+- Exclude editor folders (`.vscode/`, `.idea/`).
+- Exclude the `brain/` directory (agent artifacts).
+
+### [NEW] [README.md](file:///C:/Users/maiku/.gemini/antigravity/README.md)
+- Project title and description.
+- How to add a new post using [create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1).
+- How to update the index using [update_blog.bat](file:///C:/Users/maiku/.gemini/antigravity/update_blog.bat).
+- Instructions for publishing to GitHub Pages (Run script locally -> Commit -> Push).
+
+## Workflow Explanation
+The user currently uses local scripts. The simplest path to GitHub is:
+1. Run [create-post.ps1](file:///C:/Users/maiku/.gemini/antigravity/create-post.ps1) (Local)
+2. Run [update_blog.bat](file:///C:/Users/maiku/.gemini/antigravity/update_blog.bat) (Local)
+3. Commit all changes (HTML + JS) and push.
+GitHub Pages will verify the static HTML/JS as is.

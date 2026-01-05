@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Redesign announcements and blog pages to use individual card blocks for each post instead of a single list container. Each card will have its own background and collapsible content.",
+  "updatedAt":  "2026-01-05T10:01:25.004018900Z"
+}

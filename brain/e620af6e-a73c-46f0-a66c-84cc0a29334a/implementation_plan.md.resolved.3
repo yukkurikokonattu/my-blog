@@ -1,0 +1,27 @@
+# ブログ記事自動表示システムの実装プラン
+
+新しい記事を追加するたびに複数の HTML を手動で書き換える手間をなくすため、記事データを一括管理する仕組みを導入します。
+
+## 変更内容
+
+### 共通データファイル (`blog-posts.js`) [NEW]
+
+- [NEW] [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js)
+    - 記事のタイトル、ファイル名、投稿日を管理するリストを作成します。
+
+### ブログ一覧ページ ([blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html))
+
+- [MODIFY] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html)
+    - HTML内の固定表示を削除し、`blog-posts.js` から記事を読み込んで自動でリストを生成するようにします。
+
+### ホームページ ([index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html))
+
+- [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
+    - `blog-posts.js` の一番新しい記事を自動的に「最新のブログ記事」として表示するようにします。
+
+## 検証プラン
+
+### 手動確認
+1. [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) を開き、最新記事が正しく表示されているか確認します。
+2. [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) を開き、すべての記事がリスト表示されているか確認します。
+3. `blog-posts.js` にダミーの4件目のデータを追加し、HTMLをいじらずにページが更新されるか確認します。

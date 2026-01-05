@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Tasks for initializing git and pushing to GitHub",
+  "updatedAt":  "2026-01-05T13:41:40.917457400Z",
+  "version":  "13"
+}
