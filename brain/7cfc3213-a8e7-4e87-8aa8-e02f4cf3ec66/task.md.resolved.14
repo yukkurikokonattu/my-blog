@@ -1,0 +1,11 @@
+# Task: Upload to GitHub
+
+- [x] Initialize local Git repository <!-- id: 0 -->
+    - [x] Verify Git installation
+    - [x] `git init`
+    - [x] `git add .`
+    - [x] `git commit`
+- [/] Connect to GitHub <!-- id: 1 -->
+    - [ ] User creates repo on GitHub
+    - [ ] Add remote origin
+- [ ] Push code to GitHub <!-- id: 2 -->

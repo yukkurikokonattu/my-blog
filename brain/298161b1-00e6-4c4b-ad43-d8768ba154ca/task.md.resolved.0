@@ -1,0 +1,19 @@
+# Task List
+
+- [ ] Explore existing implementation <!-- id: 0 -->
+    - [ ] Analyze `blog-posts.js` and `update-blog-index.ps1` to understand the data structure and automation. <!-- id: 1 -->
+    - [ ] Examine `index.html` and `announcements.html` to see current display logic. <!-- id: 2 -->
+- [ ] Design Announcements System <!-- id: 3 -->
+    - [ ] Create/Define `announcements.js` structure. <!-- id: 4 -->
+    - [ ] Plan HTML/JS updates for `announcements.html`. <!-- id: 5 -->
+    - [ ] Plan HTML/JS updates for `index.html` (latest announcements). <!-- id: 6 -->
+    - [ ] Plan automation script updates. <!-- id: 7 -->
+- [ ] Implementation <!-- id: 8 -->
+    - [ ] Create `announcements.js`. <!-- id: 9 -->
+    - [ ] Update `announcements.html`. <!-- id: 10 -->
+    - [ ] Update `index.html`. <!-- id: 11 -->
+    - [ ] Create/Update automation scripts. <!-- id: 12 -->
+- [ ] Verification <!-- id: 13 -->
+    - [ ] Verify announcements render correctly on the dedicated page. <!-- id: 14 -->
+    - [ ] Verify latest announcements render on the home page. <!-- id: 15 -->
+    - [ ] Verify automation scripts work. <!-- id: 16 -->

@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan to automate the announcements section similarly to the blog section.\n1. Standardize announcement files as `news*.html`.\n2. Create `announcements.js` for data storage.\n3. Update `update-blog-index.ps1` to also manage announcements.\n4. Update HTML pages to display dynamic content.",
+  "updatedAt":  "2026-01-05T22:25:26.086260Z"
+}
