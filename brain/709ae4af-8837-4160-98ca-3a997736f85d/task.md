@@ -1,5 +1,6 @@
-- [x] Final Guide Refinements <!-- id: 35 -->
-    - [x] Fix z-index conflict in `style.css` (dimmed bubble fix) <!-- id: 36 -->
-    - [x] Refine `index.html` repositioning logic (Shift completely to the right) <!-- id: 37 -->
-    - [x] Verify Navbar guide steps <!-- id: 38 -->
+# Tasks
+
+- [x] Enforce Site-wide Default Dark Mode <!-- id: 39 -->
+    - [x] Update all `.html` files (Home, Blog, Announcements, Posts) <!-- id: 40 -->
+    - [x] Update `post_template.html` and `news_template.html` <!-- id: 41 -->
 - [x] Final Verification and Publication <!-- id: 8 -->

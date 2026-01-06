@@ -5,20 +5,14 @@ Add an interactive or semi-static "Site Guide" component to the homepage. This w
 
 ## Proposed Changes
 ### Root Directory
-#### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **Default Dark Mode**:
-    - Update theme script to use `'dark'` as the default if `localStorage.getItem('theme')` is null.
-- **Nav Guide Steps**:
-    - Add `id="nav-announcements"` and `id="nav-blog"` to navbar links.
-    - Update `guideSteps` array.
-- **Guide Positioning (Right Shift)**:
-    - Update `repositionGuide` logic to prefer placing the bubble to the right or with a significant horizontal offset to avoid covering the center/target.
-    - Ensure the "Next" buttons are always visible.
+#### [MODIFY] All HTML Files and Templates
+- **Default Dark Mode Enforcement**:
+    - Search and replace `localStorage.getItem('theme') || 'light'` with `localStorage.getItem('theme') || 'dark'` in all `.html` files (Home, Blog, Announcements, and individual posts/news).
+    - Ensure `themeIcon.textContent` matches the default theme.
 
-#### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
-- **Highlight Refinement**:
-    - Ensure `.guide-highlight` has a high z-index but is actually visible (not dimmed).
-    - Adjust `.guide-content` to have no shadow interference.
+#### [MODIFY] Individual Posts and News
+- **Batch Update**:
+    - Use a PowerShell script to update all existing `post*.html` and `news*.html` files.
 
 ## Verification Plan
 ### Manual Verification
