@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -15,6 +15,11 @@
 </head>
 
 <body>
+    <div class='progress-container'>
+        <div id='scroll-progress' class='progress-bar'></div>
+    </div>
+    
+    </div>
     <nav class="navbar">
         <div class="nav-container">
             <ul>
@@ -29,10 +34,13 @@
     </nav>
     <main class="container">
         <h1 class="text-outline">私ゆっくりココナッツサイト作りました！</h1>
-        <p id="post-date" class="post-date"></p>
+                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+            <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
+            <span id="reading-time" class="reading-time"></span>
+        </div>
         <details open>
             <summary>記事内容</summary>
-            <div class="post-content">
+            <div class="post-content" >
                 <!-- 本文をここに記入 -->
                 <p>なんと私サイトを作りました！</p>
                 <p>AIと協力してこのサイトを作成しました
@@ -41,6 +49,13 @@
                 <p>それでは！</p>
             </div>
         </details>
+                
+
+                <section class="recent-posts-section">
+            <h2 class="text-outline recent-section-title" style="font-size: 1.3rem;"></h2>
+            <div id="recent-posts-grid" class="recent-posts-grid"></div>
+        </section>
+
         <div style="margin-top: 2rem; text-align: center;">
             <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
                 ブログ一覧に戻る</a>
@@ -71,6 +86,53 @@
         const pad = n => n.toString().padStart(2, '0');
         const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
         document.getElementById('post-date').textContent = formatted;
+    </script>
+    
+    <script src="blog-posts.js"></script>
+    <script>
+        // --- Premium Features Logic ---
+        (function() {
+            // 1. Progress Bar
+            window.addEventListener('scroll', () => {
+                const winScroll = window.scrollY || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                if (height <= 0) return;
+                const scrolled = (winScroll / height) * 100;
+                const bar = document.getElementById('scroll-progress');
+                if (bar) bar.style.width = Math.min(Math.max(scrolled, 0), 100) + "%";
+            });
+
+            // 2. Reading Time
+            const contentEl = document.getElementById('post-content');
+            if (contentEl) {
+                const text = contentEl.textContent.replace(/\s+/g, '');
+                const readingTime = Math.ceil(text.length / 500);
+                const timeEl = document.getElementById('reading-time');
+                if (timeEl) timeEl.textContent = "\u23f1\ufe0f \u7d04 " + readingTime + " \u5206\u3067\u8aad\u3081\u307e\u3059";
+            }
+
+            // 3. Recent Items
+            window.addEventListener('DOMContentLoaded', () => {
+                const isPost = true;
+                const gridId = isPost ? 'recent-posts-grid' : 'recent-announcements-grid';
+                const grid = document.getElementById(gridId);
+                const data = isPost ? window.blogPosts : window.announcements;
+                
+                // Set Title via Unicode Escape
+                const titleEl = document.querySelector('.recent-section-title');
+                if (titleEl) titleEl.textContent = isPost ? '\u6700\u8fd1\u306e\u6295\u7a3f' : '\u6700\u65b0\u306e\u304a\u77e5\u3089\u305b';
+
+                if (!grid || !data) return;
+                const currentPath = window.location.pathname.split('/').pop();
+                data.filter(item => item.url !== currentPath).slice(0, 2).forEach(item => {
+                    const card = document.createElement('a');
+                    card.href = item.url;
+                    card.className = 'recent-post-mini-card';
+                    card.innerHTML = '<h4>' + item.title + '</h4><span class="mini-date">' + item.date + '</span>';
+                    grid.appendChild(card);
+                });
+            });
+        })();
     </script>
 </body>
 

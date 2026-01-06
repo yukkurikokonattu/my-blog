@@ -1,6 +1,6 @@
-# ブログの新機能（プレミアム機能）の追加完了
+# ブログとお知らせの新機能（プレミアム機能）の追加完了
 
-ココナッツさんのブログに、よりプロフェッショナルな印象を与える3つの新機能を追加しました！
+ココナッツさんのブログとお知らせ（News）に、よりプロフェッショナルな印象を与える3つの新機能をすべて追加しました！
 これらはテンプレートに組み込んであるので、**これ以降バットファイル（.bat）で作る記事にも自動で適用されます。**
 
 ## 追加された機能
@@ -23,10 +23,15 @@
 - **テンプレート**:
     - [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html)
     - [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
-- **最新の記事（反映済み）**:
+- **過去のすべてのお知らせ（反映済み）**:
+    - [このサイトに変更を加えました！](file:///c:/Users/maiku/.gemini/antigravity/news_20260106_1104.html)
+    - [試験的にこのサイトを公開・運用を始めます！！](file:///c:/Users/maiku/.gemini/antigravity/news_20260106_0935.html)
+    - [不具合修正完了！](file:///c:/Users/maiku/.gemini/antigravity/news_20260106_1332.html)
+- **過去のブログ記事（反映済み）**:
     - [不具合対策テスト投稿](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1330.html)
-    - [不具合修正完了！(お知らせ)](file:///c:/Users/maiku/.gemini/antigravity/news_20260106_1332.html)
     - [テスト投稿(不具合あり)](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1323.html)
+    - [サイトどうするかで疲れちゃったｗ](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1317.html)
+    - [私ゆっくりココナッツサイト作りました！](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_0925.html)
 
 ## 確認方法
 新しくバットファイルで記事を作ってみるか、上記の反映済みの記事を開いてみてください。

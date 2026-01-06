@@ -418,8 +418,13 @@ summary {
   left: 0;
   width: 100%;
   height: 4px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.05);
+  /* Subtle background for visibility */
   z-index: 2000;
+}
+
+[data-theme="dark"] .progress-container {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .progress-bar {
