@@ -34,7 +34,7 @@ Copy-Item $templatePath $nextFile
 # 4. Replace content
 $content = Get-Content $nextFile -Encoding UTF8
 $content = $content -replace "記事タイトル", $title
-$content = $content -replace "タイトル", $title
+$content = $content -replace "<title>ブログ記事 - タイトル</title>", "<title>ブログ記事 - $title</title>"
 $content | Set-Content $nextFile -Encoding UTF8
 
 # 5. Update index
