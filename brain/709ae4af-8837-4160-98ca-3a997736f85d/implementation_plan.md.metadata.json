@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan for a \"Site Guide\" feature using speech bubbles and a helper character.",
-  "updatedAt":  "2026-01-06T01:00:01.140081300Z",
-  "version":  "3"
+  "summary":  "Implementation plan for adding search, tags, and page transitions.",
+  "updatedAt":  "2026-01-06T01:51:52.376229200Z",
+  "version":  "11"
 }

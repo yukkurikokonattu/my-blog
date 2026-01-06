@@ -1,0 +1,14 @@
+# Tasks
+
+- [/] Planning Features <!-- id: 100 -->
+- [ ] Implement Smooth Page Transitions (Fade-in) <!-- id: 101 -->
+    - [ ] Add transition CSS to [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) <!-- id: 102 -->
+    - [ ] Update templates to include transition class <!-- id: 103 -->
+- [ ] Implement Tags and Filtering <!-- id: 104 -->
+    - [ ] Update [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) and [announcements.js](file:///c:/Users/maiku/.gemini/antigravity/announcements.js) data format <!-- id: 105 -->
+    - [ ] Add Tag UI to [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) and [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html) <!-- id: 106 -->
+    - [ ] Implement filter logic in JS <!-- id: 107 -->
+- [ ] Implement Search Functionality <!-- id: 108 -->
+    - [ ] Add Search Input UI <!-- id: 109 -->
+    - [ ] Implement real-time title search in JS <!-- id: 110 -->
+- [ ] Final Verification and Publication <!-- id: 111 -->

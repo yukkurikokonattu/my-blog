@@ -1,0 +1,10 @@
+# Tasks
+
+- [/] Planning Features <!-- id: 100 -->
+- [ ] Implement Smooth Page Transitions (Fade-in) <!-- id: 101 -->
+    - [ ] Add transition CSS to [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) <!-- id: 102 -->
+    - [ ] Update all HTML files to include `fade-in` class <!-- id: 103 -->
+- [ ] Implement Search Functionality <!-- id: 108 -->
+    - [ ] Add Search Input UI to [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) and [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html) <!-- id: 109 -->
+    - [ ] Implement real-time search logic in JS <!-- id: 110 -->
+- [ ] Final Verification and Publication <!-- id: 111 -->

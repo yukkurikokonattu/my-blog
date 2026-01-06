@@ -1,0 +1,42 @@
+# Implementation Plan - Search, Tags & Transitions
+
+Adding search and tag filtering to improve content discoverability, and smooth transitions for a premium feel.
+
+## Proposed Changes
+
+### [Component] Global Styles
+#### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
+- **Smooth Transitions**:
+    - Define `@keyframes fadeIn` for smooth entry.
+    - Create a `.fade-in` utility class for main content containers.
+- **Search & Tag UI**:
+    - Add styles for tag buttons (active/inactive states).
+    - Add styles for the search input bar.
+
+### [Component] Data & Scripting
+#### [MODIFY] [update-blog-index.ps1](file:///c:/Users/maiku/.gemini/antigravity/update-blog-index.ps1)
+- Update logic to extract tags from `<meta name="keywords" content="...">`.
+- Update the JS output format to include the `tags` array for each post/announcement.
+
+#### [MODIFY] [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) & [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
+- Add a placeholder `<meta name="keywords" content="タグ1, タグ2">` so new posts have it by default.
+- (Manual) Add sample tags to existing posts for testing.
+
+#### [MODIFY] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) & [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html)
+- **UI**: Add a `<div id="filter-container">` with a search input and tag buttons.
+- **Logic**: 
+    - Function to render posts based on active search/tag filters.
+    - Event listeners for real-time searching and tag clicking.
+
+### [Component] Templates
+#### [MODIFY] Templates
+- Add `.fade-in` class to `<main>` containers in [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html), [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html), [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html), and templates.
+
+## Verification Plan
+### Automated Tests
+- N/A
+
+### Manual Verification
+1. Verify that clicking an "Announcements" menu item fades in the content smoothly.
+2. Search for a specific word in the blog page and ensure results update instantly.
+3. Click a tag and verify that only posts with that tag are displayed.

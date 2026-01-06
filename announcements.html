@@ -21,8 +21,15 @@
             </button>
         </div>
     </nav>
-    <main class="container">
+    <main class="container fade-in">
         <h1 class="text-outline">お知らせ</h1>
+
+        <!-- Search Section -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="search-input" placeholder="お知らせタイトルで検索...">
+        </div>
+
         <div id="announcement-list-container">
             <!-- JavaScript will load content here -->
         </div>
@@ -30,25 +37,40 @@
 
     <script src="announcements.js"></script>
     <script>
-        function loadAnnouncements() {
-            const container = document.getElementById('announcement-list-container');
-            if (window.announcements && window.announcements.length > 0) {
-                container.innerHTML = window.announcements.map(item => `
-                    <div class="post-card">
-                        <p class="post-date">${item.date}</p>
-                        <h2>${item.title}</h2>
-                        <div class="post-content">
-                            <p><a href="${item.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">詳細を見る</a></p>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                container.innerHTML = '<p class="text-center">現在お知らせはありません。</p>';
+        const announcementListContainer = document.getElementById('announcement-list-container');
+        const searchInput = document.getElementById('search-input');
+
+        function displayAnnouncements(items) {
+            if (items.length === 0) {
+                announcementListContainer.innerHTML = '<p style="text-align: center; margin-top: 2rem;">見つかりませんでした。</p>';
+                return;
             }
+
+            announcementListContainer.innerHTML = items.map(item => `
+                <div class="post-card fade-in">
+                    <p class="post-date">${item.date}</p>
+                    <h2>${item.title}</h2>
+                    <div class="post-content">
+                        <p><a href="${item.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">詳細を見る</a></p>
+                    </div>
+                </div>
+            `).join('');
         }
 
-        // Try to load immediately
-        loadAnnouncements();
+        function filterAnnouncements() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = window.announcements.filter(item =>
+                item.title.toLowerCase().includes(query)
+            );
+            displayAnnouncements(filtered);
+        }
+
+        searchInput.addEventListener('input', filterAnnouncements);
+
+        // Initial Load
+        if (window.announcements) {
+            displayAnnouncements(window.announcements);
+        }
 
         // Theme logic
         const themeToggle = document.getElementById('theme-toggle');
@@ -65,7 +87,6 @@
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
         });
-
     </script>
 </body>
 

@@ -1,29 +1,31 @@
-# Site Guide Implementation Plan
+# Implementation Plan - Search, Tags & Transitions
 
-## Goal Description
-Add an interactive or semi-static "Site Guide" component to the homepage. This will use speech bubbles and a small character to explain the different sections (Blog/Updates, YouTube, Theme) to first-time visitors.
+Adding search and tag filtering to improve content discoverability, and smooth transitions for a premium feel.
 
 ## Proposed Changes
-### Root Directory
-#### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **HTML Restructuring**:
-    - Move `.guide-content` outside of `.guide-overlay` to separate their stacking contexts.
-    - This allows the bubble to sit above the highlight shadow while the overlay sits below.
-- **Top-Aligned Positioning**:
-    - Update `repositionGuide` to align the bubble with the **top** of the target element (rather than the center).
-    - This ensures the text is immediately visible near the heading of the section.
-    - Maintain a safe margin (padding) to prevent any perceived overlap.
 
+### [Component] Global Styles
 #### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
-- **Layering Fix**:
-    - `.guide-overlay`: `z-index: 10000` (Bottom)
-    - `.guide-highlight`: `z-index: 10001` (Middle - shadow layer)
-    - `.guide-content`: `z-index: 10002` (Top - bright layer)
-- **Backdrop Clarification**: Ensure no blur and optimize opacity.
+- **Smooth Transitions**:
+    - Define `@keyframes fadeIn` for smooth entry.
+    - Create a `.fade-in` utility class for main content containers.
+- **Search & Tag UI**:
+    - Add styles for tag buttons (active/inactive states).
+    - Add styles for the search input bar.
+
+### [Component] Data & Scripting
+#### [MODIFY] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html) & [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html)
+- **UI**: Add a `<div id="search-container">` with a search input bar.
+- **Logic**: 
+    - Implement real-time filtering of the `blogPosts` or `announcements` array based on the search input.
+    - Re-render the list automatically as the user types.
+
+### [Component] Templates
+#### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html), [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html), [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html), [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html), [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
+- Add the `fade-in` class to the `<main>` or container element.
 
 ## Verification Plan
 ### Manual Verification
-1.  Clear browser `localStorage`.
-2.  Reload the site and verify the guide starts automatically.
-3.  Click through the steps and verify the bubbles point to the correct elements.
-4.  Verify the guide doesn't reappear on subsequent reloads unless manually triggered (optional button).
+1. Verify that clicking any navigation link fades in the content smoothly.
+2. Search for a specific word in the blog page and ensure results update instantly.
+3. Verify the search bar looks premium and fits the theme.

@@ -29,6 +29,23 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
+/* Smooth Fade-in Animation */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -214,6 +231,51 @@ summary {
 
 .post-content p {
   margin: 0.5rem 0;
+}
+
+/* Search Bar Styles */
+.search-container {
+  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 20px;
+  padding-left: 45px;
+  border-radius: 30px;
+  border: 2px solid var(--accent);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.search-input:focus {
+  box-shadow: 0 6px 20px rgba(49, 130, 206, 0.3);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  position: absolute;
+  left: calc(50% - 235px);
+  /* Positioned relative to the 500px max-width */
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--accent);
+  font-size: 1.2rem;
+  pointer-events: none;
+}
+
+@media (max-width: 550px) {
+  .search-icon {
+    left: 25px;
+  }
 }
 
 /* Site Guide Styles */

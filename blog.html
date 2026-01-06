@@ -21,8 +21,15 @@
             </button>
         </div>
     </nav>
-    <main class="container">
+    <main class="container fade-in">
         <h1 class="text-outline">ブログ</h1>
+
+        <!-- Search Section -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="search-input" placeholder="記事タイトルで検索...">
+        </div>
+
         <div id="blog-list-container">
             <!-- JavaScriptでここに記事リストが入ります -->
         </div>
@@ -30,22 +37,41 @@
 
     <script src="blog-posts.js"></script>
     <script>
-        // Blog list logic
-        function loadBlogList() {
-            const container = document.getElementById('blog-list-container');
-            if (window.blogPosts) {
-                container.innerHTML = window.blogPosts.map(post => `
-                    <div class="post-card">
-                        <p class="post-date">${post.date}</p>
-                        <h2>${post.title}</h2>
-                        <div class="post-content">
-                            <p><a href="${post.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">記事を読む</a></p>
-                        </div>
-                    </div>
-                `).join('');
+        // Blog list & Search logic
+        const blogListContainer = document.getElementById('blog-list-container');
+        const searchInput = document.getElementById('search-input');
+
+        function displayPosts(posts) {
+            if (posts.length === 0) {
+                blogListContainer.innerHTML = '<p style="text-align: center; margin-top: 2rem;">見つかりませんでした。</p>';
+                return;
             }
+
+            blogListContainer.innerHTML = posts.map(post => `
+                <div class="post-card fade-in">
+                    <p class="post-date">${post.date}</p>
+                    <h2>${post.title}</h2>
+                    <div class="post-content">
+                        <p><a href="${post.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">記事を読む</a></p>
+                    </div>
+                </div>
+            `).join('');
         }
-        loadBlogList();
+
+        function filterPosts() {
+            const query = searchInput.value.toLowerCase();
+            const filtered = window.blogPosts.filter(post =>
+                post.title.toLowerCase().includes(query)
+            );
+            displayPosts(filtered);
+        }
+
+        searchInput.addEventListener('input', filterPosts);
+
+        // Initial Load
+        if (window.blogPosts) {
+            displayPosts(window.blogPosts);
+        }
 
         // Theme logic
         const themeToggle = document.getElementById('theme-toggle');
@@ -62,17 +88,6 @@
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
         });
-
-        // Date logic
-        function updateDates() {
-            const now = new Date();
-            const pad = n => n.toString().padStart(2, '0');
-            const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
-            document.querySelectorAll('.auto-date').forEach(el => {
-                el.textContent = formatted;
-            });
-        }
-        updateDates();
     </script>
 </body>
 
