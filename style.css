@@ -331,8 +331,7 @@ summary {
 
 .guide-highlight {
   position: relative !important;
-  z-index: 9999 !important;
-  /* Layer strictly below the guide content */
+  z-index: 20001 !important;
   box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.7) !important;
   pointer-events: none;
 }
