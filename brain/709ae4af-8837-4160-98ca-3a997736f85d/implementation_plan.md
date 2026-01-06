@@ -1,34 +1,28 @@
-# Update Links Implementation Plan
+# Homepage Redesign Implementation Plan
 
 ## Goal Description
-Update the "Channel Registration" (Subscribe) links and ensure the "Home" tab navigation works correctly across the website. The user wants to replace placeholders with actual links.
+Redesign the homepage (`index.html`) to prioritize new content (Blog and Announcements) by moving them to the top. Group the YouTube video and "Channel Registration" button together at the bottom.
 
 ## User Review Required
-- **YouTube Channel URL**: Need the actual URL to link to.
-- **Featured Video ID**: (Optional) Need a video ID for the embedded player on the homepage.
-- **Home Tab**: Confirm if `index.html` is the correct target or if it should be something else.
+- **Layout Order**: Confirm if "Latest Blog" should come before "Latest Announcement" or vice-versa. (I will put Blog first as requested).
 
 ## Proposed Changes
 ### Root Directory
 #### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- Update `https://www.youtube.com/@YOUR_CHANNEL` to the user's provided URL.
-- Update `VIDEO_ID` in the iframe if a video ID is provided.
-
-#### [MODIFY] [blog.html](file:///c:/Users/maiku/.gemini/antigravity/blog.html)
-- Ensure "Home" link points to `index.html`.
-
-#### [MODIFY] [announcements.html](file:///c:/Users/maiku/.gemini/antigravity/announcements.html)
-- Ensure "Home" link points to `index.html`.
-
-#### [MODIFY] [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html)
-- Ensure "Home" link points to `index.html` (for future posts).
-
-#### [MODIFY] [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
-- Ensure "Home" link points to `index.html` (for future posts).
+- **Reorder Sections**:
+    1.  Main Title (`<h1>`)
+    2.  Latest Blog Section
+    3.  Latest Announcement Section [NEW]
+    4.  Introduction/Text Card
+    5.  YouTube Section (Video + Subscribe Button)
+- **JavaScript Update**:
+    - Include `announcements.js`.
+    - Add `loadLatestAnnouncement()` function to fetch and display the most recent announcement.
+    - Update `loadLatestPost()` (already exists) to match the new style if needed.
 
 ## Verification Plan
 ### Manual Verification
 1.  Open `index.html` in a browser.
-2.  Click the "Channel Registration" button and verify it opens the correct YouTube channel.
-3.  Click the "Home" link in the navigation bar and verify it stays on/goes to `index.html`.
-4.  Check `blog.html` and `announcements.html` navigation links as well.
+2.  Verify "Latest Blog" and "Latest Announcement" appear at the top.
+3.  Verify the YouTube video and "Channel Registration" button are grouped at the bottom.
+4.  Verify that clicking "記事を読む" and "詳細を見る" works correctly.

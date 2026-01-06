@@ -24,56 +24,88 @@
     <main class="container">
         <h1 class="text-outline">ゆっくりココナッツ 公式サイトへようこそ</h1>
 
-        <div class="post-card">
-            <p>最新の動画をチェックしよう！</p>
-            <!-- YouTube埋め込み (プレースホルダーID: VIDEO_ID) -->
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/kKWYwJGSnpM" allowfullscreen></iframe>
+        <!-- 1. 最新のコンテンツ（ブログ・お知らせ） -->
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div>
+                <h2 class="text-outline" style="font-size: 1.5rem;">最新のブログ記事</h2>
+                <div id="latest-post-container">
+                    <!-- JavaScriptでここに最新記事が入ります -->
+                </div>
             </div>
-
-            <div style="text-align: center;">
-                <a href="https://www.youtube.com/channel/UC9LpqPFPOh650jI6mO9Z2Xg" target="_blank"
-                    class="subscribe-btn">
-                    <span>▶</span> チャンネル登録をする
-                </a>
+            <div>
+                <h2 class="text-outline" style="font-size: 1.5rem;">最新のお知らせ</h2>
+                <div id="latest-announcement-container">
+                    <!-- JavaScriptでここに最新のお知らせが入ります -->
+                </div>
             </div>
         </div>
 
+        <!-- 2. 自己紹介カード -->
         <div class="post-card">
             <p>ゆっくりココナッツのサイトです！頑張ってAIといっしょに作りました。</p>
             <p>このサイトではダークモードとライトモードを切り替えられるようになりました。</p>
             <p>今後から色々な機能を追加していく予定です。</p>
         </div>
 
-        <h2 class="text-outline" style="margin-top: 2rem;">最新のブログ記事</h2>
-        <div id="latest-post-container">
-            <!-- JavaScriptでここに最新記事が入ります -->
+        <!-- 3. YouTubeセクション（動画 + 登録ボタン） -->
+        <div class="post-card" style="margin-top: 2rem;">
+            <h2 style="text-align: center; margin-bottom: 1rem;">YouTube 最新動画</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/kKWYwJGSnpM" allowfullscreen></iframe>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p style="margin-bottom: 1rem; font-weight: bold;">最新の動画をチェックしよう！</p>
+                <a href="https://www.youtube.com/channel/UC9LpqPFPOh650jI6mO9Z2Xg" target="_blank"
+                    class="subscribe-btn">
+                    <span>▶</span> チャンネル登録をする
+                </a>
+            </div>
         </div>
     </main>
 
     <script src="blog-posts.js"></script>
+    <script src="announcements.js"></script>
     <script>
-        // Latest post logic
-        function loadLatestPost() {
-            const container = document.getElementById('latest-post-container');
+        // Latest Content Logic
+        function loadLatestContent() {
+            // Load Blog
+            const blogContainer = document.getElementById('latest-post-container');
             if (window.blogPosts && window.blogPosts.length > 0) {
-                const post = window.blogPosts[0]; // 一番上の記事を取得
-                container.innerHTML = `
-                    <div class="post-card">
+                const post = window.blogPosts[0];
+                blogContainer.innerHTML = `
+                    <div class="post-card" style="height: 100%;">
                         <p class="post-date">${post.date}</p>
-                        <h3>${post.title}</h3>
+                        <h3 style="margin: 0.5rem 0;">${post.title}</h3>
                         <a href="${post.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">記事を読む</a>
                     </div>
                 `;
+            } else {
+                blogContainer.innerHTML = '<p>まだ記事がありません。</p>';
+            }
+
+            // Load Announcement
+            const newsContainer = document.getElementById('latest-announcement-container');
+            if (window.announcements && window.announcements.length > 0) {
+                const news = window.announcements[0];
+                newsContainer.innerHTML = `
+                    <div class="post-card" style="height: 100%;">
+                        <p class="post-date">${news.date}</p>
+                        <h3 style="margin: 0.5rem 0;">${news.title}</h3>
+                        <a href="${news.url}" class="subscribe-btn" style="display: inline-block; margin-top: 10px; text-decoration: none; font-size: 0.9rem; padding: 5px 15px;">詳細を見る</a>
+                    </div>
+                `;
+            } else {
+                newsContainer.innerHTML = '<p>まだお知らせはありません。</p>';
             }
         }
-        loadLatestPost();
 
+        loadLatestContent();
+
+        // Theme logic
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const root = document.documentElement;
-
-        // 保存されたテーマを読み込む
         const savedTheme = localStorage.getItem('theme') || 'light';
         root.setAttribute('data-theme', savedTheme);
         themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
@@ -81,7 +113,6 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = root.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
             root.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
