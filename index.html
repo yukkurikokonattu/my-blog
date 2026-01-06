@@ -176,12 +176,12 @@
         function repositionGuide(targetEl, content) {
             const rect = targetEl.getBoundingClientRect();
             const contentRect = content.getBoundingClientRect();
-            const padding = 40; // ターゲットとの距離を広めに確保
+            const padding = 30; // ターゲットとの距離
 
             content.style.position = 'absolute';
 
-            // 垂直位置：ターゲットの高さ中央付近に合わせる（基本は上寄り）
-            let top = rect.top + window.scrollY + (rect.height / 2) - (contentRect.height / 2);
+            // 垂直位置：ターゲットの「上端」に合わせる (分かりやすくするため)
+            let top = rect.top + window.scrollY;
             let arrowClass = '';
 
             // 水平位置：ターゲットの「右側」に配置

@@ -9,8 +9,10 @@ Add an interactive or semi-static "Site Guide" component to the homepage. This w
 - **HTML Restructuring**:
     - Move `.guide-content` outside of `.guide-overlay` to separate their stacking contexts.
     - This allows the bubble to sit above the highlight shadow while the overlay sits below.
-- **Aggressive Positioning**:
-    - Refine `repositionGuide` to ensure the bubble is placed strictly to the side of the target with increased padding.
+- **Top-Aligned Positioning**:
+    - Update `repositionGuide` to align the bubble with the **top** of the target element (rather than the center).
+    - This ensures the text is immediately visible near the heading of the section.
+    - Maintain a safe margin (padding) to prevent any perceived overlap.
 
 #### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
 - **Layering Fix**:
