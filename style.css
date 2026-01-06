@@ -1,6 +1,10 @@
 /* style.css – 公式サイト共通デザイン */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap');
 
+html {
+  scrollbar-gutter: stable;
+}
+
 :root {
   /* Light Mode (Default) */
   --bg: #f8f9fa;

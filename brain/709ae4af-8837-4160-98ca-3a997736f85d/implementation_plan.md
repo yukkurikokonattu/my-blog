@@ -9,6 +9,9 @@ Adding search and tag filtering to improve content discoverability, and smooth t
 - **Smooth Transitions**:
     - Define `@keyframes fadeIn` for smooth entry.
     - Create a `.fade-in` utility class for main content containers.
+- **Layout Stability**:
+    - Add `scrollbar-gutter: stable` to the `html` or `body` element.
+    - This ensures that space for the scrollbar is always reserved, preventing the content from "jumping" or shifting horizontally when moving between short and long pages.
 - **Search & Tag UI**:
     - Add styles for tag buttons (active/inactive states).
     - Add styles for the search input bar.
