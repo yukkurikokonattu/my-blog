@@ -175,34 +175,42 @@
         function repositionGuide(targetEl, content) {
             const rect = targetEl.getBoundingClientRect();
             const contentRect = content.getBoundingClientRect();
-            const padding = 25;
+            const padding = 30; // ターゲットとの距離
 
-            // 垂直位置
-            let top = rect.top + window.scrollY - contentRect.height - padding;
-            let arrowClass = 'guide-arrow-down';
+            // 垂直位置：ターゲットの高さ中央付近に合わせる（基本は上寄り）
+            let top = rect.top + window.scrollY + (rect.height / 2) - (contentRect.height / 2);
+            let arrowClass = ''; // 横に配置するので矢印は不要か、別のクラスを検討
 
-            if (rect.top < contentRect.height + padding + 50) {
-                top = rect.bottom + window.scrollY + padding;
-                arrowClass = 'guide-arrow-up';
+            // 水平位置：ターゲットの「右側」に配置
+            let left = rect.right + window.scrollX + padding;
+
+            // 画面の右側に入り切らない場合は「左側」に配置
+            if (left + contentRect.width > window.innerWidth - 20) {
+                left = rect.left + window.scrollX - contentRect.width - padding;
+
+                // 左側にも入り切らない場合（画面が狭い）は、上下に避ける
+                if (left < 10) {
+                    left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 2);
+                    top = rect.top + window.scrollY - contentRect.height - padding;
+                    arrowClass = 'guide-arrow-down';
+
+                    // 上に入り切らない場合は下
+                    if (rect.top < contentRect.height + padding + 50) {
+                        top = rect.bottom + window.scrollY + padding;
+                        arrowClass = 'guide-arrow-up';
+                    }
+                }
             }
 
-            // 水平位置：大幅に右側へ寄せる（ターゲットの右端付近に配置）
-            let left = rect.left + window.scrollX + (rect.width * 0.6);
-
-            // 画面右端からはみ出す場合は左側に寄せる
-            const margin = 20;
-            if (left + contentRect.width > window.innerWidth - margin) {
-                left = (rect.left + window.scrollX + rect.width * 0.4) - contentRect.width;
-            }
-
-            // 画面左端からもはみ出さないようにガード
-            if (left < margin) left = margin;
+            // 最終的な画面内への収まり調整（上下）
+            const headerHeight = 80;
+            if (top < window.scrollY + headerHeight) top = window.scrollY + headerHeight;
 
             content.style.top = `${top}px`;
             content.style.left = `${left}px`;
             content.style.transform = 'none';
             content.classList.remove('guide-arrow-up', 'guide-arrow-down');
-            content.classList.add(arrowClass);
+            if (arrowClass) content.classList.add(arrowClass);
         }
 
         document.getElementById('guide-next').addEventListener('click', () => {

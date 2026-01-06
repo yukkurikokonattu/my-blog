@@ -1,6 +1,5 @@
-# Tasks
-
-- [x] Enforce Site-wide Default Dark Mode <!-- id: 39 -->
-    - [x] Update all `.html` files (Home, Blog, Announcements, Posts) <!-- id: 40 -->
-    - [x] Update `post_template.html` and `news_template.html` <!-- id: 41 -->
+- [/] Final Guide Refinements (Blur & Positioning) <!-- id: 43 -->
+    - [ ] Remove or reduce `backdrop-filter` blur in `style.css` <!-- id: 44 -->
+    - [ ] Update `repositionGuide` logic to ensure zero overlap with target <!-- id: 45 -->
+    - [ ] Test on large elements (YouTube section) <!-- id: 46 -->
 - [x] Final Verification and Publication <!-- id: 8 -->

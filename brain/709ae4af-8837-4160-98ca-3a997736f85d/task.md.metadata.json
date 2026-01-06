@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Site-wide default dark mode enforced. Final verification and publication.",
-  "updatedAt":  "2026-01-06T01:28:36.604370400Z",
-  "version":  "24"
+  "summary":  "Tasks for reducing blur and fixing guide positioning overlap.",
+  "updatedAt":  "2026-01-06T01:30:22.719482800Z",
+  "version":  "25"
 }
