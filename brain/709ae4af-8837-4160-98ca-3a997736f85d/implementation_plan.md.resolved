@@ -1,28 +1,29 @@
-# Homepage Redesign Implementation Plan
+# Site Guide Implementation Plan
 
 ## Goal Description
-Redesign the homepage ([index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)) to prioritize new content (Blog and Announcements) by moving them to the top. Group the YouTube video and "Channel Registration" button together at the bottom.
-
-## User Review Required
-- **Layout Order**: Confirm if "Latest Blog" should come before "Latest Announcement" or vice-versa. (I will put Blog first as requested).
+Add an interactive or semi-static "Site Guide" component to the homepage. This will use speech bubbles and a small character to explain the different sections (Blog/Updates, YouTube, Theme) to first-time visitors.
 
 ## Proposed Changes
 ### Root Directory
+#### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
+- **Speech Bubble Styles**: Create CSS for glassmorphed speech bubbles with a "tail" pointing to specific elements.
+- **Helper Character**: Add styles for a small, cute character icon that appears next to the bubbles.
+- **Animations**: Add fade-in and subtle float animations.
+
 #### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **Refine Layout Order**:
-    1.  Main Title (`<h1>`)
-    2.  Latest Blog & Announcement Section
-    3.  Channel Registration Button (Moved up, separate) [REFINE]
-    4.  Introduction/Text Card (Moved down)
-    5.  YouTube Video Section (Separate card at bottom) [REFINE]
-- **JavaScript Update**:
-    - Include [announcements.js](file:///c:/Users/maiku/.gemini/antigravity/announcements.js).
-    - Add `loadLatestAnnouncement()` function to fetch and display the most recent announcement.
-    - Update `loadLatestPost()` (already exists) to match the new style if needed.
+- **Guide Overlay**: Add a hidden container for the guide.
+- **Tour Script**:
+    - Use `localStorage` to check if it's the user's first visit.
+    - Define steps:
+        1. Welcome message.
+        2. Point to Blog/Announcements.
+        3. Point to Subscribe button.
+        4. Point to Theme toggle.
+    - Add "Next" / "Close" buttons to the bubbles.
 
 ## Verification Plan
 ### Manual Verification
-1.  Open [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) in a browser.
-2.  Verify "Latest Blog" and "Latest Announcement" appear at the top.
-3.  Verify the YouTube video and "Channel Registration" button are grouped at the bottom.
-4.  Verify that clicking "記事を読む" and "詳細を見る" works correctly.
+1.  Clear browser `localStorage`.
+2.  Reload the site and verify the guide starts automatically.
+3.  Click through the steps and verify the bubbles point to the correct elements.
+4.  Verify the guide doesn't reappear on subsequent reloads unless manually triggered (optional button).

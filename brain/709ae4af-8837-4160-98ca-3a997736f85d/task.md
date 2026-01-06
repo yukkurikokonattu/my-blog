@@ -1,6 +1,7 @@
 # Tasks
 
-- [/] Refine Homepage Layout <!-- id: 14 -->
-    - [x] Move Subscribe button above Introduction card <!-- id: 15 -->
-    - [x] Separate Subscribe button from Video card <!-- id: 16 -->
-- [ ] Final Verification and Publication <!-- id: 8 -->
+- [x] Implement Site Guide (Speech Bubbles) <!-- id: 17 -->
+    - [x] Design speech bubble and character CSS <!-- id: 18 -->
+    - [x] Create tour logic in `index.html` (localStorage based) <!-- id: 19 -->
+    - [x] Add guide steps for key site areas (Blog, News, YouTube, Theme) <!-- id: 20 -->
+- [x] Final Verification and Publication <!-- id: 8 -->

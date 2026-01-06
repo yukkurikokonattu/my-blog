@@ -17,6 +17,11 @@ I have implemented the requested cleanup and the automation for the YouTube late
     3.  Updates the blog/announcement indexes.
     4.  Uploads everything to GitHub.
 
+### 3. Site Guide (First-time Visitor Tour)
+- **Interactive Tour:** Added a "Site Guide" that uses speech bubbles and a helper icon to explain the site.
+- **Sections covered:** It points out where to find the latest Blog/News, how to Subscribe, how to watch the latest YouTube video, and how to use the Theme Toggle.
+- **Save State:** The guide only appears automatically on the first visit (uses `localStorage`).
+
 ## How to use
 From now on, whenever you want to update your site or show a new video:
 1.  Run **`publish_site.bat`**.
