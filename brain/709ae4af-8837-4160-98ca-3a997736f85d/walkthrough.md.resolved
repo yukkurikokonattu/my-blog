@@ -1,28 +1,25 @@
-# Site Guide Structural Fix Walkthrough
+# Search and Transitions Walkthrough
 
-I have implemented a fundamental structural change to the site guide to ensure maximum visibility and clarity.
+I have added premium UI enhancements to improve content discovery and visual appeal.
 
-## Changes Made
+## New Features
 
-### 1. HTML Restructure (Decoupling)
-- **Problem**: The guide bubble was nested inside the overlay. This created a "stacking context" issue where the highlight shadow would cover the bubble if they shared the same parent.
-- **Solution**: Moved the `.guide-content` (the bubble) completely outside of the `.guide-overlay`. They are now sibling elements, allowing for independent layering.
+### 1. Real-time Search
+- **Blog & Announcements**: Added a sleek search bar at the top of each list.
+- **Instant Filtering**: Results update immediately as you type, filtering by title.
+- **Premium UI**: The search bar features an icon, smooth focus animations, and a subtle shadow that matches the site's theme.
 
-### 2. Precise Layering (Z-Index Hierarchy)
-- I've established a strict 3-layer system to ensure the bubble is always the brightest and top-most element:
-  - **Layer 0 (10000)**: `.guide-overlay` (The dimmed background background)
-  - **Layer 1 (10001)**: `.guide-highlight` (The massive shadow focusing on the target)
-  - **Layer 2 (10002)**: `.guide-content` (The bright guide bubble and character)
+### 2. Smooth Page Transitions
+- **Fade-in Animation**: Every major page (Home, Blog, Announcements, Posts) now features a smooth fade-in animation when loaded.
+- **Motion**: Content subtly slides up as it fades in, creating a high-end, premium feel.
+- **Consistency**: The same transition is applied to all existing and future posts created via the templates.
 
-### 3. Visual & Positioning Refinements
-- **No Blur**: Removed the `backdrop-filter: blur` to keep the underlying content crisp.
-- **Aggressive Positioning**: The bubble now stays strictly to the **side** of the target element with a 40px margin, ensuring it never overlaps the content being explained (especially the YouTube video).
-
-## Verification Results
-- Verified that the bubble remains bright and un-dimmed by the highlight shadow.
-- Verified that the "YouTube Section" guide step correctly places the bubble outside the video frame.
+## Verification
+- GitHub update: [main 7c1cab4] (and subsequent updates)
+- Verified search responsiveness on the blog page.
+- Verified fade-in consistency across all navigation links.
 
 ### How to Confirm
-1. Refresh the site (GH Pages takes 1-2 mins to sync).
-2. Press `Ctrl + F5` to ensure the latest structural changes are loaded.
-3. Observe the guide: the bubble should be vibrant and bright, and clearly separated from the target area.
+1. Refresh the site.
+2. Click between "Home", "Blog", and "Announcements" to see the fade-in effect.
+3. Go to the Blog page and type "作りました" into the search bar to see results update instantly.
