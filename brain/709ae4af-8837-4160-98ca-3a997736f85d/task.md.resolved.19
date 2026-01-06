@@ -1,0 +1,9 @@
+# Tasks
+
+- [/] Refine Guide and Theme <!-- id: 29 -->
+    - [x] Set Default Theme to Dark for new users <!-- id: 30 -->
+    - [x] Add IDs to Nav links for guide targeting <!-- id: 31 -->
+    - [/] Update `guideSteps` with Nav explanations <!-- id: 32 -->
+    - [/] Shift Guide bubble position (to the right/offset) <!-- id: 33 -->
+    - [/] Ensure Guide and Target are not dimmed <!-- id: 34 -->
+- [x] Final Verification and Publication <!-- id: 8 -->

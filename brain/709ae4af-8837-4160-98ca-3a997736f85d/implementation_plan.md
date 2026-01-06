@@ -5,16 +5,20 @@ Add an interactive or semi-static "Site Guide" component to the homepage. This w
 
 ## Proposed Changes
 ### Root Directory
+#### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
+- **Default Dark Mode**:
+    - Update theme script to use `'dark'` as the default if `localStorage.getItem('theme')` is null.
+- **Nav Guide Steps**:
+    - Add `id="nav-announcements"` and `id="nav-blog"` to navbar links.
+    - Update `guideSteps` array.
+- **Guide Positioning (Right Shift)**:
+    - Update `repositionGuide` logic to prefer placing the bubble to the right or with a significant horizontal offset to avoid covering the center/target.
+    - Ensure the "Next" buttons are always visible.
+
 #### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
-- **Z-Index Overhaul**:
-    - Increase `.guide-overlay` z-index to `2000`.
-    - Increase `.guide-content` z-index to `2001`.
-    - Keep `.guide-highlight` at `1001` (so the guide sits *above* the highlight shadow).
-- **Brightness Fix**:
-    - Remove `backdrop-filter` from `.guide-overlay` as it might be dimming the child content in some rendering contexts.
-    - Ensure `.guide-content` has a solid (non-transparent) `background: var(--card-bg)`.
-- **Interaction Fix**:
-    - Add `z-index` explicitly to any potentially problematic containers if `getBoundingClientRect` logic needs more stability.
+- **Highlight Refinement**:
+    - Ensure `.guide-highlight` has a high z-index but is actually visible (not dimmed).
+    - Adjust `.guide-content` to have no shadow interference.
 
 ## Verification Plan
 ### Manual Verification

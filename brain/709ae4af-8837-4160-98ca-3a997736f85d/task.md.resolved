@@ -1,4 +1,9 @@
-- [x] Fix Guide Visibility and Layering <!-- id: 25 -->
-    - [x] Update [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) z-indexes (Overlay/Content vs Highlight) <!-- id: 26 -->
-    - [x] Remove `backdrop-filter` from overlay <!-- id: 27 -->
+# Tasks
+
+- [x] Refine Guide and Theme <!-- id: 29 -->
+    - [x] Set Default Theme to Dark for new users <!-- id: 30 -->
+    - [x] Add IDs to Nav links for guide targeting <!-- id: 31 -->
+    - [x] Update `guideSteps` with Nav explanations <!-- id: 32 -->
+    - [x] Shift Guide bubble position (to the right/offset) <!-- id: 33 -->
+    - [x] Ensure Guide and Target are not dimmed <!-- id: 34 -->
 - [x] Final Verification and Publication <!-- id: 8 -->

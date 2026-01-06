@@ -13,8 +13,8 @@
         <div class="nav-container">
             <ul>
                 <li><a href="index.html" class="active">ホーム</a></li>
-                <li><a href="announcements.html">お知らせ</a></li>
-                <li><a href="blog.html">ブログ</a></li>
+                <li><a href="announcements.html" id="nav-announcements">お知らせ</a></li>
+                <li><a href="blog.html" id="nav-blog">ブログ</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
                 <span id="theme-icon">☀️</span>
@@ -120,10 +120,12 @@
         // Site Guide Logic
         const guideSteps = [
             { text: "ようこそ！ゆっくりココナッツ公式サイトへ！使いかたを簡単に説明するね！", target: null },
-            { text: "ここには最新の「ブログ」や「お知らせ」が表示されるよ。チェックしてみてね！", target: "content-section" },
+            { text: "この「お知らせ」メニューからは、最新の情報をまとめて確認できるよ！", target: "nav-announcements" },
+            { text: "こっちの「ブログ」メニューには、日々の出来事や企画を書いていくよ！", target: "nav-blog" },
+            { text: "ここには新着の「ブログ」や「お知らせ」が表示されるよ。チェックしてみてね！", target: "content-section" },
             { text: "YouTubeのチャンネル登録はこのボタンからできるよ！", target: "subscribe-section" },
             { text: "最新の動画もここで直接見れちゃうんだ！", target: "youtube-section" },
-            { text: "夜に見る時は、ここから「ダークモード」に切り替えると目に優しいよ！", target: "theme-toggle" },
+            { text: "夜に見る時は、ここから「ダークモード」に切り替えると目に優しいよ！（今はデフォルトでダークになってるよ！）", target: "theme-toggle" },
             { text: "説明は以上だよ！ゆっくりしていってね！", target: null }
         ];
 
@@ -175,16 +177,18 @@
             const contentRect = content.getBoundingClientRect();
             const padding = 25;
 
+            // 垂直位置の計算
             let top = rect.top + window.scrollY - contentRect.height - padding;
             let arrowClass = 'guide-arrow-down';
 
-            // 画面の上に収まらない場合はターゲットの下に表示
             if (rect.top < contentRect.height + padding + 50) {
                 top = rect.bottom + window.scrollY + padding;
                 arrowClass = 'guide-arrow-up';
             }
 
-            let left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 2);
+            // 水平位置の計算：ターゲットの右側に寄せる
+            // ターゲットの中央から少し右にずらす（contentRect.widthの1/4程度）
+            let left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 4);
 
             // 画面の端からはみ出さないように調整
             const margin = 15;
@@ -225,7 +229,8 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        // デフォルトをダークモードに変更
+        const savedTheme = localStorage.getItem('theme') || 'dark';
         root.setAttribute('data-theme', savedTheme);
         themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
 
