@@ -9,6 +9,9 @@ Adding search and tag filtering to improve content discoverability, and smooth t
 - **Smooth Transitions**:
     - Define `@keyframes fadeIn` for smooth entry.
     - Create a `.fade-in` utility class for main content containers.
+- **Eliminate White Flash**:
+    - Add a tiny inline script in the `<head>` of all HTML files to apply the `data-theme` attribute immediately.
+    - Set the default background color in `style.css` to match the dark theme, as it is now the standard for new users.
 - **Layout Stability**:
     - Add `scrollbar-gutter: stable` to the `html` or `body` element.
     - This ensures that space for the scrollbar is always reserved, preventing the content from "jumping" or shifting horizontally when moving between short and long pages.

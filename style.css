@@ -6,23 +6,23 @@ html {
 }
 
 :root {
-  /* Light Mode (Default) */
-  --bg: #f8f9fa;
-  --card-bg: #ffffff;
-  --text: #2d3748;
-  --accent: #3182ce;
-  --outline-color: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --font: 'Inter', 'Noto Sans JP', sans-serif;
-}
-
-[data-theme="dark"] {
+  /* Dark Mode (New Standard) */
   --bg: #1a202c;
   --card-bg: #2d3748;
   --text: #e2e8f0;
   --accent: #63b3ed;
   --outline-color: #1a202c;
   --shadow-color: rgba(0, 0, 0, 0.4);
+  --font: 'Inter', 'Noto Sans JP', sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #2d3748;
+  --accent: #3182ce;
+  --outline-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 * {

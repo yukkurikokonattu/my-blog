@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ゆっくりココナッツ 公式サイト</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Inline script to prevent FOUC (Flash of Unstyled Content)
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -245,21 +252,24 @@
         // ページ読み込みから少し遅れて開始
         setTimeout(startGuide, 1000);
 
-        // Theme logic
+        // Theme logic - Sidebar update
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const root = document.documentElement;
-        // デフォルトをダークモードに変更
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        root.setAttribute('data-theme', savedTheme);
-        themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        function updateThemeUI(theme) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+
+        // Initial UI Update
+        updateThemeUI(root.getAttribute('data-theme'));
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = root.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            updateThemeUI(newTheme);
         });
     </script>
 </body>

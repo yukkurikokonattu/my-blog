@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ブログ - ゆっくりココナッツ 公式サイト</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -77,16 +83,19 @@
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const root = document.documentElement;
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        root.setAttribute('data-theme', savedTheme);
-        themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        function updateThemeUI(theme) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+
+        updateThemeUI(root.getAttribute('data-theme'));
 
         themeToggle.addEventListener('click', () => {
             const currentTheme = root.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             root.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+            updateThemeUI(newTheme);
         });
     </script>
 </body>

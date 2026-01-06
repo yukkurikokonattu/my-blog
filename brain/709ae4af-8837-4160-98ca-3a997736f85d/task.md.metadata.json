@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Fixing the layout shift issue by stabilizing the scrollbar area.",
-  "updatedAt":  "2026-01-06T02:12:17.705068300Z",
-  "version":  "33"
+  "summary":  "White flash issue resolved via inline scripts and dark mode defaults. All tasks complete.",
+  "updatedAt":  "2026-01-06T02:21:51.120271600Z",
+  "version":  "35"
 }
