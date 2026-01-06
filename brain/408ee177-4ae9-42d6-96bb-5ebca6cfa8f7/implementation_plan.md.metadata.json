@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
-  "summary":  "Implementation plan to fix the missing blog titles. The plan involves updating the blog template to include placeholders and manually fixing the titles in already generated posts.",
-  "updatedAt":  "2026-01-06T04:26:43.631141300Z"
+  "summary":  "Implementation plan for adding reading time estimation, recent posts section, and a scroll progress bar.",
+  "updatedAt":  "2026-01-06T05:06:47.494305Z",
+  "version":  "1"
 }

@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough of the fixes for the missing blog titles. Templates were updated, PowerShell scripts refined, and existing broken posts fixed.",
-  "updatedAt":  "2026-01-06T04:29:23.614952400Z"
+  "summary":  "Walkthrough of the new premium features added to the blog. Includes a scroll progress bar, automated reading time calculation, and a suggested posts section. Templates and recent posts were updated.",
+  "updatedAt":  "2026-01-06T05:11:40.981752800Z",
+  "version":  "1"
 }

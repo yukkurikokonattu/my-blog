@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="progress-container">
+        <div id="scroll-progress" class="progress-bar"></div>
+    </div>
     <nav class="navbar">
         <div class="nav-container">
             <ul>
@@ -29,15 +32,27 @@
     </nav>
     <main class="container fade-in">
         <h1 id="post-title" class="text-outline">不具合修正完了！</h1>
-        <p id="post-date" class="post-date"></p>
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+            <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
+            <span id="reading-time" class="reading-time"></span>
+        </div>
         <details open>
             <summary>不具合修正完了！</summary>
-            <div class="post-content">
+            <div class="post-content" id="post-content">
                 <!-- 本文をここに記入 -->
                 <p>不具合修正完了しました、ご不便をおかげし、誠に申し訳ございませんでした。</p>
             </div>
         </details>
-        <div style="margin-top: 2rem; text-align: center;">
+
+        <!-- Recent Announcements Section -->
+        <section class="recent-posts-section">
+            <h2 class="text-outline" style="font-size: 1.3rem;">最新のお知らせ</h2>
+            <div id="recent-announcements-grid" class="recent-posts-grid">
+                <!-- Announcements will be loaded here -->
+            </div>
+        </section>
+
+        <div style="margin-top: 3rem; text-align: center;">
             <a href="announcements.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
                 お知らせ一覧に戻る</a>
         </div>
@@ -67,6 +82,48 @@
         const pad = n => n.toString().padStart(2, '0');
         const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
         document.getElementById('post-date').textContent = formatted;
+    </script>
+    <script src="announcements.js"></script>
+    <script>
+        // --- New Features Logic ---
+
+        // 1. Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('scroll-progress');
+            if (bar) bar.style.width = scrolled + "%";
+        });
+
+        // 2. Automated Reading Time
+        const content = document.getElementById('post-content').textContent;
+        const textLength = content.replace(/\s+/g, '').length;
+        const readingTime = Math.ceil(textLength / 500);
+        document.getElementById('reading-time').textContent = `⏱️ 約 ${readingTime} 分で読めます`;
+
+        // 3. Load Recent Announcements
+        function loadRecentAnnouncements() {
+            const grid = document.getElementById('recent-announcements-grid');
+            if (!grid || typeof announcements === 'undefined') return;
+
+            const currentPath = window.location.pathname.split('/').pop();
+            const otherNews = announcements
+                .filter(item => item.url !== currentPath)
+                .slice(0, 2);
+
+            otherNews.forEach(item => {
+                const card = document.createElement('a');
+                card.href = item.url;
+                card.className = 'recent-post-mini-card';
+                card.innerHTML = `
+                    <h4>${item.title}</h4>
+                    <span class="mini-date">${item.date}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        window.addEventListener('DOMContentLoaded', loadRecentAnnouncements);
     </script>
 </body>
 

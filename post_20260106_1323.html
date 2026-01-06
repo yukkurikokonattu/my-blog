@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="progress-container">
+        <div id="scroll-progress" class="progress-bar"></div>
+    </div>
     <nav class="navbar">
         <div class="nav-container">
             <ul>
@@ -29,15 +32,27 @@
     </nav>
     <main class="container fade-in">
         <h1 id="post-title" class="text-outline">テスト投稿(なんか不具合があるため)</h1>
-        <p id="post-date" class="post-date"></p>
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+            <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
+            <span id="reading-time" class="reading-time"></span>
+        </div>
         <details open>
             <summary>記事内容</summary>
-            <div class="post-content">
+            <div class="post-content" id="post-content">
                 <!-- 本文をここに記入 -->
                 <p>テスト投稿です。</p>
             </div>
         </details>
-        <div style="margin-top: 2rem; text-align: center;">
+
+        <!-- Recent Posts Section -->
+        <section class="recent-posts-section">
+            <h2 class="text-outline" style="font-size: 1.3rem;">最近の投稿</h2>
+            <div id="recent-posts-grid" class="recent-posts-grid">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+
+        <div style="margin-top: 3rem; text-align: center;">
             <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
                 ブログ一覧に戻る</a>
         </div>
@@ -67,6 +82,34 @@
         const pad = n => n.toString().padStart(2, '0');
         const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
         document.getElementById('post-date').textContent = formatted;
+    </script>
+    <script src="blog-posts.js"></script>
+    <script>
+        // --- New Features Logic ---
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('scroll-progress');
+            if (bar) bar.style.width = scrolled + "%";
+        });
+        const content = document.getElementById('post-content').textContent;
+        const textLength = content.replace(/\s+/g, '').length;
+        const readingTime = Math.ceil(textLength / 500);
+        document.getElementById('reading-time').textContent = `⏱️ 約 ${readingTime} 分で読めます`;
+        function loadRecentPosts() {
+            const grid = document.getElementById('recent-posts-grid');
+            if (!grid || typeof blogPosts === 'undefined') return;
+            const currentPath = window.location.pathname.split('/').pop();
+            blogPosts.filter(p => p.url !== currentPath).slice(0, 2).forEach(p => {
+                const card = document.createElement('a');
+                card.href = p.url;
+                card.className = 'recent-post-mini-card';
+                card.innerHTML = `<h4>${p.title}</h4><span class="mini-date">${p.date}</span>`;
+                grid.appendChild(card);
+            });
+        }
+        window.addEventListener('DOMContentLoaded', loadRecentPosts);
     </script>
 </body>
 

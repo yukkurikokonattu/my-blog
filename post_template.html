@@ -15,6 +15,9 @@
 </head>
 
 <body>
+    <div class="progress-container">
+        <div id="scroll-progress" class="progress-bar"></div>
+    </div>
     <nav class="navbar">
         <div class="nav-container">
             <ul>
@@ -29,19 +32,32 @@
     </nav>
     <main class="container fade-in">
         <h1 id="post-title" class="text-outline">記事タイトル</h1>
-        <p id="post-date" class="post-date"></p>
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+            <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
+            <span id="reading-time" class="reading-time"></span>
+        </div>
         <details open>
             <summary>記事内容</summary>
-            <div class="post-content">
+            <div class="post-content" id="post-content">
                 <!-- 本文をここに記入 -->
                 <p>ここに記事本文が入ります。</p>
             </div>
         </details>
-        <div style="margin-top: 2rem; text-align: center;">
+
+        <!-- Recent Posts Section -->
+        <section class="recent-posts-section">
+            <h2 class="text-outline" style="font-size: 1.3rem;">最近の投稿</h2>
+            <div id="recent-posts-grid" class="recent-posts-grid">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+
+        <div style="margin-top: 3rem; text-align: center;">
             <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
                 ブログ一覧に戻る</a>
         </div>
     </main>
+    <script src="blog-posts.js"></script>
     <script>
         // Theme logic
         const themeToggle = document.getElementById('theme-toggle');
@@ -67,6 +83,45 @@
         const pad = n => n.toString().padStart(2, '0');
         const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
         document.getElementById('post-date').textContent = formatted;
+
+        // --- New Features Logic ---
+
+        // 1. Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + "%";
+        });
+
+        // 2. Automated Reading Time
+        const content = document.getElementById('post-content').textContent;
+        const textLength = content.replace(/\s+/g, '').length;
+        const readingTime = Math.ceil(textLength / 500); // Average 500 chars/min
+        document.getElementById('reading-time').textContent = `⏱️ 約 ${readingTime} 分で読めます`;
+
+        // 3. Load Recent Posts
+        function loadRecentPosts() {
+            const grid = document.getElementById('recent-posts-grid');
+            if (!grid || typeof blogPosts === 'undefined') return;
+
+            const currentPath = window.location.pathname.split('/').pop();
+            const otherPosts = blogPosts
+                .filter(post => post.url !== currentPath)
+                .slice(0, 2); // Show top 2 recent other posts
+
+            otherPosts.forEach(post => {
+                const card = document.createElement('a');
+                card.href = post.url;
+                card.className = 'recent-post-mini-card';
+                card.innerHTML = `
+                    <h4>${post.title}</h4>
+                    <span class="mini-date">${post.date}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        window.addEventListener('DOMContentLoaded', loadRecentPosts);
     </script>
 </body>
 

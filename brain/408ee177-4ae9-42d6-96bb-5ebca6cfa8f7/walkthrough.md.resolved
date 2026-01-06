@@ -1,31 +1,33 @@
-# ブログ記事タイトルの不具合修正完了
+# ブログの新機能（プレミアム機能）の追加完了
 
-バットファイル（PowerShellスクリプト）で記事を作成した際に、タイトルの書き換えが行われていなかった不具合を修正しました。
+ココナッツさんのブログに、よりプロフェッショナルな印象を与える3つの新機能を追加しました！
+これらはテンプレートに組み込んであるので、**これ以降バットファイル（.bat）で作る記事にも自動で適用されます。**
 
-## 修正内容
+## 追加された機能
 
-### 1. テンプレートの修正
-[post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) の `<h1>` タグが空だったため、スクリプトが置換対象を見つけられなくなっていました。
-置換用のプレースホルダー（`記事タイトル`）を追加し、同時にお知らせ（News）と同じ縁取りスタイル（`text-outline`）を適用しました。
+### 1. 読了時間の自動計算
+記事の文字数を自動でカウントし、「⏱️ 約 〇 分で読めます」と表示します。
+ココナッツさんが手動で入力する必要はありません。
 
-```diff
-- <h1 id="post-title"></h1>
-+ <h1 id="post-title" class="text-outline">記事タイトル</h1>
-```
+### 2. スクロール・プログレスバー
+画面の最上部に、記事をどこまで読み進めたかを示す進行状況バーを表示するようにしました。
+スクロールに合わせてスムーズに伸び縮みします。
 
-### 2. スクリプトの改善
-[create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1) および [create-announcement.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-announcement.ps1) の置換ロジックをより正確にしました。
-- `<h1>` 内のタイトルの置換が確実に行われるようにしました。
-- `<title>` タグ（ブラウザのタブに表示される名前）も正しく置換されるように修正しました。
+### 3. おすすめ記事（最近の投稿）セクション
+記事の最後に、他の最新記事を表示するようにしました。
+読者が他の記事も見つけやすくなり、サイトの回遊性が高まります。
 
-### 3. 既存の記事の修正
-タイトルが空になっていた以下のファイルを修正し、タイトルが表示されるようにしました。
-- [post_20260106_1323.html](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1323.html)
-- [post_20260106_1317.html](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1317.html)
+## 修正・更新したファイル
 
-## 動作確認結果
-新しく記事を作成し、タイトルが本文とタブの両方に正しく反映されることを確認しました。
-![image](/c:/Users/maiku/.gemini/antigravity/brain/408ee177-4ae9-42d6-96bb-5ebca6cfa8f7/uploaded_image_1767673547094.png)
-*(修正前の状態：タイトルが消えてしまっていました)*
+- **共通スタイル**: [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
+- **テンプレート**:
+    - [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html)
+    - [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
+- **最新の記事（反映済み）**:
+    - [不具合対策テスト投稿](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1330.html)
+    - [不具合修正完了！(お知らせ)](file:///c:/Users/maiku/.gemini/antigravity/news_20260106_1332.html)
+    - [テスト投稿(不具合あり)](file:///c:/Users/maiku/.gemini/antigravity/post_20260106_1323.html)
 
-現在は、新しく作成する記事でも正しくタイトルが表示されるようになっています！
+## 確認方法
+新しくバットファイルで記事を作ってみるか、上記の反映済みの記事を開いてみてください。
+画面上部に青いバーが出て、タイトルの横に時計アイコンの読了目安が出ていれば成功です！

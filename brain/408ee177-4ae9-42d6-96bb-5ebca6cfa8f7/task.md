@@ -1,9 +1,12 @@
-# Task: Fix Missing Blog Titles
+# Task: Add Enhanced Blog Features
 
-- [x] Fix blog title generation issue
-    - [x] Investigate the cause of missing titles <!-- id: 0 -->
-    - [x] Update `post_template.html` with proper placeholders <!-- id: 1 -->
-    - [x] Update `news_template.html` for consistency (optional but good) <!-- id: 2 -->
-    - [x] Fix existing broken blog posts <!-- id: 3 -->
-    - [x] Verify the fix by creating a test post <!-- id: 4 -->
-- [x] Notify the user about the fix <!-- id: 5 -->
+- [/] Implement Reading Time, Recent Posts, and Progress Bar
+    - [ ] Update `style.css` with progress bar and recent posts styles <!-- id: 0 -->
+    - [ ] Update `post_template.html` and `news_template.html` <!-- id: 1 -->
+        - [ ] Add Reading Progress Bar container <!-- id: 1.1 -->
+        - [ ] Add Reading Time placeholder <!-- id: 1.2 -->
+        - [ ] Add Recent Posts/Announcements section <!-- id: 1.3 -->
+        - [ ] Add JS logic for calculation and dynamic loading <!-- id: 1.4 -->
+    - [ ] Update existing posts to include new features <!-- id: 2 -->
+    - [ ] Verify functionality <!-- id: 3 -->
+- [ ] Notify the user about the completion <!-- id: 4 -->
