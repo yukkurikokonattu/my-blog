@@ -1,0 +1,6 @@
+# Tasks
+
+- [/] Fix Guide Visibility and Layering <!-- id: 25 -->
+    - [ ] Update [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) z-indexes (Overlay/Content vs Highlight) <!-- id: 26 -->
+    - [ ] Remove `backdrop-filter` from overlay <!-- id: 27 -->
+- [x] Final Verification and Publication <!-- id: 8 -->

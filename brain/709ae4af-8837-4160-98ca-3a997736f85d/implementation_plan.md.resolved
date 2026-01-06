@@ -6,18 +6,15 @@ Add an interactive or semi-static "Site Guide" component to the homepage. This w
 ## Proposed Changes
 ### Root Directory
 #### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
-- **Dynamic Positioning Styles**:
-    - Remove fixed centering from `.guide-overlay`.
-    - Change `.guide-content` to `position: absolute`.
-    - Add classes for speech bubble arrows (pointing up or down).
-- **Z-Index Fix**: Ensure the highlighted element is interactable if needed, or refine the overlay to not block the target.
-
-#### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **Positioning Script**:
-    - Create a `repositionGuide(targetEl)` function.
-    - Use `getBoundingClientRect()` to calculate coordinates.
-    - Add logic to flip the bubble (above/below) depending on screen space.
-    - Update [showStep](file:///c:/Users/maiku/.gemini/antigravity/index.html#141-161) to call this repositioning logic.
+- **Z-Index Overhaul**:
+    - Increase `.guide-overlay` z-index to `2000`.
+    - Increase `.guide-content` z-index to `2001`.
+    - Keep `.guide-highlight` at `1001` (so the guide sits *above* the highlight shadow).
+- **Brightness Fix**:
+    - Remove `backdrop-filter` from `.guide-overlay` as it might be dimming the child content in some rendering contexts.
+    - Ensure `.guide-content` has a solid (non-transparent) `background: var(--card-bg)`.
+- **Interaction Fix**:
+    - Add `z-index` explicitly to any potentially problematic containers if `getBoundingClientRect` logic needs more stability.
 
 ## Verification Plan
 ### Manual Verification
