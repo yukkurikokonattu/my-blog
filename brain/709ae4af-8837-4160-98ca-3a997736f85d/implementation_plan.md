@@ -9,12 +9,12 @@ Redesign the homepage (`index.html`) to prioritize new content (Blog and Announc
 ## Proposed Changes
 ### Root Directory
 #### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **Reorder Sections**:
+- **Refine Layout Order**:
     1.  Main Title (`<h1>`)
-    2.  Latest Blog Section
-    3.  Latest Announcement Section [NEW]
-    4.  Introduction/Text Card
-    5.  YouTube Section (Video + Subscribe Button)
+    2.  Latest Blog & Announcement Section
+    3.  Channel Registration Button (Moved up, separate) [REFINE]
+    4.  Introduction/Text Card (Moved down)
+    5.  YouTube Video Section (Separate card at bottom) [REFINE]
 - **JavaScript Update**:
     - Include `announcements.js`.
     - Add `loadLatestAnnouncement()` function to fetch and display the most recent announcement.

@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Starting the homepage redesign execution. Reordering sections and adding announcement display logic.",
-  "updatedAt":  "2026-01-06T00:46:21.761513600Z",
-  "version":  "9"
+  "summary":  "Executing the layout refinement: moving subscribe button and separating YouTube card.",
+  "updatedAt":  "2026-01-06T00:51:30.266090300Z",
+  "version":  "11"
 }

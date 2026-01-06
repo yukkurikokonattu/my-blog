@@ -1,8 +1,6 @@
 # Tasks
 
-- [/] Redesign Homepage Layout <!-- id: 9 -->
-    - [/] Reorder sections in [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) (Content top, YouTube bottom) <!-- id: 10 -->
-    - [/] Add "Latest Announcement" section to [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) <!-- id: 11 -->
-    - [/] Update JavaScript in [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) to load announcements <!-- id: 12 -->
-    - [/] Group YouTube video and Subscribe button together <!-- id: 13 -->
+- [/] Refine Homepage Layout <!-- id: 14 -->
+    - [x] Move Subscribe button above Introduction card <!-- id: 15 -->
+    - [x] Separate Subscribe button from Video card <!-- id: 16 -->
 - [ ] Final Verification and Publication <!-- id: 8 -->
