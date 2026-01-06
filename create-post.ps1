@@ -1,9 +1,11 @@
 ﻿# create-post.ps1
-# 実行例: .\create-post.ps1 -title "新しい記事のタイトル"
-
 param (
     [string]$title = ""
 )
+
+# Set console encoding to UTF-8
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+[Console]::InputEncoding = [System.Text.Encoding]::UTF8
 
 if ($title -eq "") {
     $title = Read-Host "記事のタイトルを入力してください"
@@ -14,43 +16,37 @@ if ($title -eq "") {
     exit
 }
 
-# 1. 次の記事番号を探す
-$posts = Get-ChildItem "post*.html" | Where-Object { $_.Name -match "post(\d+)\.html" }
-$maxNum = 0
-foreach ($p in $posts) {
-    if ($p.Name -match "post(\d+)\.html") {
-        $num = [int]$Matches[1]
-        if ($num -gt $maxNum) { $maxNum = $num }
-    }
-}
-$nextNum = $maxNum + 1
-$nextFile = "post$nextNum.html"
+# 1. Generate unique filename (post_YYYYMMDD_HHmm.html)
+# Using date-based naming to avoid numbering issues and stay consistent with news
+$dateStrForFile = Get-Date -Format "yyyyMMdd_HHmm"
+$nextFile = "post_$dateStrForFile.html"
 
-# 2. テンプレートをコピー (post_template.html を使用)
+# 2. Check template
 $templatePath = "post_template.html"
 if (-not (Test-Path $templatePath)) {
     Write-Error "$templatePath が見つかりません。"
     exit
 }
 
+# 3. Copy template
 Copy-Item $templatePath $nextFile
 
-# 3. タイトルを置換
-(Get-Content $nextFile -Encoding UTF8) -replace "タイトル", $title -replace "記事タイトル", $title | Set-Content $nextFile -Encoding UTF8
+# 4. Replace content
+$content = Get-Content $nextFile -Encoding UTF8
+$content = $content -replace "記事タイトル", $title
+$content = $content -replace "タイトル", $title
+$content | Set-Content $nextFile -Encoding UTF8
 
-# 4. blog-posts.js に追記
-$jsPath = "blog-posts.js"
-$dateStr = Get-Date -Format "yy/MM/dd/HH:mm"
-$newEntry = "    {`n        title: `"$title`",`n        url: `"$nextFile`",`n        date: `"$dateStr`"`n    },"
-
-$jsContent = Get-Content $jsPath -Raw -Encoding UTF8
-$jsContent = $jsContent -replace "const blogPosts = \[", "const blogPosts = [`n$newEntry"
-$jsContent | Set-Content $jsPath -Encoding UTF8
+# 5. Update index
+Write-Host "記事を作成しました: $nextFile"
+Write-Host "インデックスを更新しています..."
+& .\update-blog-index.ps1
+if ($LASTEXITCODE -ne 0) {
+    Write-Warning "インデックスの更新でエラーが発生した可能性があります。"
+}
 
 Write-Host "----------------------------------------"
-Write-Host "成功しました！"
+Write-Host "完了！"
 Write-Host "作成されたファイル: $nextFile"
-Write-Host "タイトル: $title"
-Write-Host "blog-posts.js を更新しました。"
+Write-Host "内容を編集してから、publish_site.bat で公開してください。"
 Write-Host "----------------------------------------"
-

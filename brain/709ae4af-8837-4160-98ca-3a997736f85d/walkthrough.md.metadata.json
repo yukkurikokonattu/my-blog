@@ -1,5 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
-  "summary":  "Walkthrough of the content cleanup and YouTube automation features.",
-  "updatedAt":  "2026-01-06T00:16:25.572171500Z"
+  "summary":  "Updated walkthrough to include the blog post creation script fix and the new batch file.",
+  "updatedAt":  "2026-01-06T00:24:40.278319600Z",
+  "version":  "1"
 }

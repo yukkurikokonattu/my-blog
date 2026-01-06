@@ -4,9 +4,10 @@ I have implemented the requested cleanup and the automation for the YouTube late
 
 ## Changes Made
 
-### 1. Content Cleanup
+### 1. Content Cleanup and New Scripts
 - **Deleted old posts:** All `post*.html` (blog) and `news*.html` (announcement) files have been removed, while keeping the `post_template.html` and `news_template.html` for your future use.
 - **Reset Indexes:** The `blog-posts.js` and `announcements.js` files have been updated to reflect that there are currently no posts.
+- **New `create_post.bat`:** I've added a new batch file for creating blog posts, similar to the one for announcements. It's fully fixed and handles Japanese titles correctly.
 
 ### 2. YouTube Automation
 - **`update-youtube-video.ps1`:** A new script that automatically fetches the latest video ID from your YouTube channel (`UC9LpqPFPOh650jI6mO9Z2Xg`) and updates the homepage.
