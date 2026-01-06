@@ -6,20 +6,18 @@ Add an interactive or semi-static "Site Guide" component to the homepage. This w
 ## Proposed Changes
 ### Root Directory
 #### [MODIFY] [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css)
-- **Speech Bubble Styles**: Create CSS for glassmorphed speech bubbles with a "tail" pointing to specific elements.
-- **Helper Character**: Add styles for a small, cute character icon that appears next to the bubbles.
-- **Animations**: Add fade-in and subtle float animations.
+- **Dynamic Positioning Styles**:
+    - Remove fixed centering from `.guide-overlay`.
+    - Change `.guide-content` to `position: absolute`.
+    - Add classes for speech bubble arrows (pointing up or down).
+- **Z-Index Fix**: Ensure the highlighted element is interactable if needed, or refine the overlay to not block the target.
 
 #### [MODIFY] [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html)
-- **Guide Overlay**: Add a hidden container for the guide.
-- **Tour Script**:
-    - Use `localStorage` to check if it's the user's first visit.
-    - Define steps:
-        1. Welcome message.
-        2. Point to Blog/Announcements.
-        3. Point to Subscribe button.
-        4. Point to Theme toggle.
-    - Add "Next" / "Close" buttons to the bubbles.
+- **Positioning Script**:
+    - Create a `repositionGuide(targetEl)` function.
+    - Use `getBoundingClientRect()` to calculate coordinates.
+    - Add logic to flip the bubble (above/below) depending on screen space.
+    - Update `showStep` to call this repositioning logic.
 
 ## Verification Plan
 ### Manual Verification

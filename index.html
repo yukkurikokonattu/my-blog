@@ -139,6 +139,8 @@
         }
 
         function showStep(index) {
+            const overlay = document.getElementById('guide-overlay');
+            const content = overlay.querySelector('.guide-content');
             const bubble = document.getElementById('guide-bubble');
             const nextBtn = document.getElementById('guide-next');
             const step = guideSteps[index];
@@ -153,10 +155,49 @@
                 if (targetEl) {
                     targetEl.classList.add('guide-highlight');
                     targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // 少しスクロールを待ってから位置計算
+                    setTimeout(() => repositionGuide(targetEl, content), 400);
                 }
+            } else {
+                // ターゲットがない場合は画面中央
+                content.style.top = '50%';
+                content.style.left = '50%';
+                content.style.transform = 'translate(-50%, -50%)';
+                content.classList.remove('guide-arrow-up', 'guide-arrow-down');
             }
 
             nextBtn.textContent = index === guideSteps.length - 1 ? '閉じる' : '次へ';
+        }
+
+        function repositionGuide(targetEl, content) {
+            const rect = targetEl.getBoundingClientRect();
+            const contentRect = content.getBoundingClientRect();
+            const padding = 25;
+
+            let top = rect.top + window.scrollY - contentRect.height - padding;
+            let arrowClass = 'guide-arrow-down';
+
+            // 画面の上に収まらない場合はターゲットの下に表示
+            if (rect.top < contentRect.height + padding + 50) {
+                top = rect.bottom + window.scrollY + padding;
+                arrowClass = 'guide-arrow-up';
+            }
+
+            let left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 2);
+
+            // 画面の端からはみ出さないように調整
+            const margin = 15;
+            if (left < margin) left = margin;
+            if (left + contentRect.width > window.innerWidth - margin) {
+                left = window.innerWidth - contentRect.width - margin;
+            }
+
+            content.style.top = `${top}px`;
+            content.style.left = `${left}px`;
+            content.style.transform = 'none';
+            content.classList.remove('guide-arrow-up', 'guide-arrow-down');
+            content.classList.add(arrowClass);
         }
 
         document.getElementById('guide-next').addEventListener('click', () => {

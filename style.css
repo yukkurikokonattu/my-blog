@@ -214,117 +214,125 @@ summary {
 
 .post-content p {
   margin: 0.5rem 0;
-}/* Site Guide Styles */
+}
+
+/* Site Guide Styles */
 .guide-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
 }
 
 .guide-overlay.active {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .guide-content {
-    position: relative;
-    max-width: 90%;
-    width: 400px;
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-    transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.guide-overlay.active .guide-content {
-    transform: translateY(0);
+  position: absolute;
+  max-width: 90%;
+  width: 320px;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--accent);
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1001;
 }
 
 .guide-character {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    display: block;
-    animation: float 3s ease-in-out infinite;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  animation: float 3s ease-in-out infinite;
 }
 
 .speech-bubble {
-    position: relative;
-    background: var(--accent);
-    color: white;
-    padding: 1.2rem;
-    border-radius: 15px;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  background: var(--accent);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .speech-bubble::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid var(--accent);
+  content: '';
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.guide-arrow-down .speech-bubble::after {
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 10px solid var(--accent);
+}
+
+.guide-arrow-up .speech-bubble::after {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 10px solid var(--accent);
 }
 
 .guide-btns {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 .guide-btn {
-    padding: 8px 20px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.2s;
+  padding: 6px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85rem;
+  transition: all 0.2s;
 }
 
 .guide-btn-primary {
-    background: var(--accent);
-    color: white;
+  background: var(--accent);
+  color: white;
 }
 
 .guide-btn-secondary {
-    background: #e2e8f0;
-    color: #4a5568;
+  background: #e2e8f0;
+  color: #4a5568;
 }
 
 @keyframes float {
 
-    0%,
-    100% {
-        transform: translateY(0);
-    }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
 
-    50% {
-        transform: translateY(-10px);
-    }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
-/* Highlighting focused element */
 .guide-highlight {
-    position: relative !important;
-    z-index: 1001 !important;
-    box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.6) !important;
-    pointer-events: none;
+  position: relative !important;
+  z-index: 1001 !important;
+  box-shadow: 0 0 0 10000px rgba(0, 0, 0, 0.6) !important;
+  pointer-events: none;
 }

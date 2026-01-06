@@ -1,0 +1,7 @@
+# Tasks
+
+- [/] Refine Site Guide Positioning <!-- id: 21 -->
+    - [ ] Update [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) for absolute positioning and arrows <!-- id: 22 -->
+    - [ ] Implement `repositionGuide` function in [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) <!-- id: 23 -->
+    - [ ] Ensure target elements are interactable or clearly visible <!-- id: 24 -->
+- [ ] Final Verification and Publication <!-- id: 8 -->
