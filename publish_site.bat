@@ -1,7 +1,7 @@
 @echo off
 cd /d %~dp0
 echo サイト情報を更新中...
-powershell -ExecutionPolicy Bypass -File .\cleanup-content.ps1
+powershell -ExecutionPolicy Bypass -File .\update-blog-index.ps1
 powershell -ExecutionPolicy Bypass -File .\update-youtube-video.ps1
 
 if %errorlevel% neq 0 (

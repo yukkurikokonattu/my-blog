@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ記事 - 私ゆっくりココナッツサイト作りました！</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="announcements.html">お知らせ</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
+                <span id="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+    <main class="container">
+        <h1 class="text-outline">私ゆっくりココナッツサイト作りました！</h1>
+        <p id="post-date" class="post-date"></p>
+        <details open>
+            <summary>記事内容</summary>
+            <div class="post-content">
+                <!-- 本文をここに記入 -->
+                <p>なんと私</p>
+            </div>
+        </details>
+        <div style="margin-top: 2rem; text-align: center;">
+            <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
+                ブログ一覧に戻る</a>
+        </div>
+    </main>
+    <script>
+        // Theme logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        root.setAttribute('data-theme', savedTheme);
+        themeIcon.textContent = savedTheme === 'dark' ? '🌙' : '☀️';
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+        });
+
+        // Insert current date/time in YY/MM/DD/HH:MM format
+        const now = new Date();
+        const pad = n => n.toString().padStart(2, '0');
+        const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        document.getElementById('post-date').textContent = formatted;
+    </script>
+</body>
+
+</html>
