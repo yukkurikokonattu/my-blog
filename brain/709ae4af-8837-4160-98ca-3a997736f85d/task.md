@@ -1,9 +1,5 @@
-# Tasks
-
-- [x] Refine Guide and Theme <!-- id: 29 -->
-    - [x] Set Default Theme to Dark for new users <!-- id: 30 -->
-    - [x] Add IDs to Nav links for guide targeting <!-- id: 31 -->
-    - [x] Update `guideSteps` with Nav explanations <!-- id: 32 -->
-    - [x] Shift Guide bubble position (to the right/offset) <!-- id: 33 -->
-    - [x] Ensure Guide and Target are not dimmed <!-- id: 34 -->
+- [x] Final Guide Refinements <!-- id: 35 -->
+    - [x] Fix z-index conflict in `style.css` (dimmed bubble fix) <!-- id: 36 -->
+    - [x] Refine `index.html` repositioning logic (Shift completely to the right) <!-- id: 37 -->
+    - [x] Verify Navbar guide steps <!-- id: 38 -->
 - [x] Final Verification and Publication <!-- id: 8 -->

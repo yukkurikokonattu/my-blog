@@ -177,7 +177,7 @@
             const contentRect = content.getBoundingClientRect();
             const padding = 25;
 
-            // 垂直位置の計算
+            // 垂直位置
             let top = rect.top + window.scrollY - contentRect.height - padding;
             let arrowClass = 'guide-arrow-down';
 
@@ -186,16 +186,17 @@
                 arrowClass = 'guide-arrow-up';
             }
 
-            // 水平位置の計算：ターゲットの右側に寄せる
-            // ターゲットの中央から少し右にずらす（contentRect.widthの1/4程度）
-            let left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 4);
+            // 水平位置：大幅に右側へ寄せる（ターゲットの右端付近に配置）
+            let left = rect.left + window.scrollX + (rect.width * 0.6);
 
-            // 画面の端からはみ出さないように調整
-            const margin = 15;
-            if (left < margin) left = margin;
+            // 画面右端からはみ出す場合は左側に寄せる
+            const margin = 20;
             if (left + contentRect.width > window.innerWidth - margin) {
-                left = window.innerWidth - contentRect.width - margin;
+                left = (rect.left + window.scrollX + rect.width * 0.4) - contentRect.width;
             }
+
+            // 画面左端からもはみ出さないようにガード
+            if (left < margin) left = margin;
 
             content.style.top = `${top}px`;
             content.style.left = `${left}px`;
