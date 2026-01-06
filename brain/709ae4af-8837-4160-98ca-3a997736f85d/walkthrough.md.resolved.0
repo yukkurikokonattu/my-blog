@@ -1,0 +1,30 @@
+# Cleanup and Automation Walkthrough
+
+I have implemented the requested cleanup and the automation for the YouTube latest video embed.
+
+## Changes Made
+
+### 1. Content Cleanup
+- **Deleted old posts:** All `post*.html` (blog) and `news*.html` (announcement) files have been removed, while keeping the [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) and [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html) for your future use.
+- **Reset Indexes:** The [blog-posts.js](file:///c:/Users/maiku/.gemini/antigravity/blog-posts.js) and [announcements.js](file:///c:/Users/maiku/.gemini/antigravity/announcements.js) files have been updated to reflect that there are currently no posts.
+
+### 2. YouTube Automation
+- **[update-youtube-video.ps1](file:///c:/Users/maiku/.gemini/antigravity/update-youtube-video.ps1):** A new script that automatically fetches the latest video ID from your YouTube channel (`UC9LpqPFPOh650jI6mO9Z2Xg`) and updates the homepage.
+- **[publish_site.bat](file:///c:/Users/maiku/.gemini/antigravity/publish_site.bat) Integration:** The publishing script now automatically:
+    1.  Cleans up any inconsistent blog/news files.
+    2.  Fetches and updates the latest YouTube video on the homepage.
+    3.  Updates the blog/announcement indexes.
+    4.  Uploads everything to GitHub.
+
+## How to use
+From now on, whenever you want to update your site or show a new video:
+1.  Run **[publish_site.bat](file:///c:/Users/maiku/.gemini/antigravity/publish_site.bat)**.
+2.  It will automatically detect your latest YouTube video and update the home page for you!
+
+## Verification Results
+- **Cleanup:** Verified that index files are now empty [announcements.js](file:///c:/Users/maiku/.gemini/antigravity/announcements.js).
+- **Automation:** Verified that [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html) now contains the latest video:
+```html
+<iframe src="https://www.youtube.com/embed/kKWYwJGSnpM" allowfullscreen></iframe>
+```
+*(ID `kKWYwJGSnpM` was fetched automatically during the process)*
