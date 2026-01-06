@@ -1,6 +1,6 @@
 {
   "artifactType":  "ARTIFACT_TYPE_TASK",
-  "summary":  "Tasks for reducing blur and fixing guide positioning overlap.",
-  "updatedAt":  "2026-01-06T01:30:22.719482800Z",
-  "version":  "25"
+  "summary":  "Restructuring guide HTML and CSS to fix visibility and overlap. Site-wide 0dark mode is already confirmed.",
+  "updatedAt":  "2026-01-06T01:36:24.843362500Z",
+  "version":  "27"
 }

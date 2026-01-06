@@ -1,5 +1,7 @@
-- [/] Final Guide Refinements (Blur & Positioning) <!-- id: 43 -->
-    - [ ] Remove or reduce `backdrop-filter` blur in `style.css` <!-- id: 44 -->
-    - [ ] Update `repositionGuide` logic to ensure zero overlap with target <!-- id: 45 -->
-    - [ ] Test on large elements (YouTube section) <!-- id: 46 -->
-- [x] Final Verification and Publication <!-- id: 8 -->
+# Tasks
+
+- [/] Final Guide Visibility Fix (HTML Restructure) <!-- id: 50 -->
+    - [ ] Move `.guide-content` outside `.guide-overlay` in `index.html` <!-- id: 51 -->
+    - [ ] Update `showStep` and `repositionGuide` to use new structure <!-- id: 52 -->
+    - [ ] Re-index CSS (Overlay: 10000, Highlight: 10001, Content: 10002) <!-- id: 53 -->
+- [ ] Final Verification and Publication <!-- id: 8 -->

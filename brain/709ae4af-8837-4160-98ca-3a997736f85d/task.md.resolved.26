@@ -1,0 +1,7 @@
+# Tasks
+
+- [x] Final Guide Refinements (Blur & Positioning) <!-- id: 43 -->
+    - [x] Remove or reduce `backdrop-filter` blur in [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css) <!-- id: 44 -->
+    - [x] Update [repositionGuide](file:///c:/Users/maiku/.gemini/antigravity/index.html#175-215) logic to ensure zero overlap with target <!-- id: 45 -->
+    - [x] Test on large elements (YouTube section) <!-- id: 46 -->
+- [x] Final Verification and Publication <!-- id: 8 -->

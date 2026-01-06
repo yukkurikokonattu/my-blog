@@ -1,0 +1,32 @@
+# Site Guide and Theme Refinement Walkthrough
+
+I have implemented several key updates to improve the user experience and visual clarity of the site guide.
+
+## Changes Made
+
+### 1. Default Dark Mode (Site-wide)
+- Enforced dark mode as the default for all new users across the entire site (Home, Blog, Announcements, and individual posts).
+- All HTML files and templates have been updated to check `localStorage` and default to `'dark'`.
+
+### 2. Guide Visual Clarity
+- **Blur Removal**: Removed the `backdrop-filter: blur(2px)` from the guide overlay. The background is now just dimmed, making it much easier to see the main content.
+- **Brightness Fix**: Standardized z-indexes to ensure the guide bubble and character are never dimmed by their own highlight shadow.
+  - `guide-overlay`: 20000
+  - `guide-highlight`: 20001
+  - `guide-content`: 20002
+
+### 3. Smart Positioning Logic
+- Redesigned the [repositionGuide](file:///c:/Users/maiku/.gemini/antigravity/index.html#175-215) function in [index.html](file:///c:/Users/maiku/.gemini/antigravity/index.html).
+- The guide bubble now aggressively positions itself to the **right** (or left) of the target element, rather than centering on it.
+- This ensures that large content like the **YouTube video section** is never obscured by the guide.
+
+## Verification
+- GitHub update: [main 9830474]
+- Verified that `localStorage` defaults to dark.
+- Verified that the guide bubble stays clear of the YouTube iframe.
+
+### How to Confirm
+1. Open the site (Wait a few minutes for GH Pages to sync).
+2. Press `Ctrl + F5` to clear cache.
+3. Observe that the site starts in dark mode.
+4. Watch the guide and notice the bubble stays to the side of the highlighted sections.

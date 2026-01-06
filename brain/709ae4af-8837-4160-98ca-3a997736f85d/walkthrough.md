@@ -1,36 +1,32 @@
-# Cleanup and Automation Walkthrough
+# Site Guide and Theme Refinement Walkthrough
 
-I have implemented the requested cleanup and the automation for the YouTube latest video embed.
+I have implemented several key updates to improve the user experience and visual clarity of the site guide.
 
 ## Changes Made
 
-### 1. Content Cleanup and New Scripts
-- **Deleted old posts:** All `post*.html` (blog) and `news*.html` (announcement) files have been removed, while keeping the `post_template.html` and `news_template.html` for your future use.
-- **Reset Indexes:** The `blog-posts.js` and `announcements.js` files have been updated to reflect that there are currently no posts.
-- **New `create_post.bat`:** I've added a new batch file for creating blog posts, similar to the one for announcements. It's fully fixed and handles Japanese titles correctly.
+### 1. Default Dark Mode (Site-wide)
+- Enforced dark mode as the default for all new users across the entire site (Home, Blog, Announcements, and individual posts).
+- All HTML files and templates have been updated to check `localStorage` and default to `'dark'`.
 
-### 2. YouTube Automation
-- **`update-youtube-video.ps1`:** A new script that automatically fetches the latest video ID from your YouTube channel (`UC9LpqPFPOh650jI6mO9Z2Xg`) and updates the homepage.
-- **`publish_site.bat` Integration:** The publishing script now automatically:
-    1.  Cleans up any inconsistent blog/news files.
-    2.  Fetches and updates the latest YouTube video on the homepage.
-    3.  Updates the blog/announcement indexes.
-    4.  Uploads everything to GitHub.
+### 2. Guide Visual Clarity
+- **Blur Removal**: Removed the `backdrop-filter: blur(2px)` from the guide overlay. The background is now just dimmed, making it much easier to see the main content.
+- **Brightness Fix**: Standardized z-indexes to ensure the guide bubble and character are never dimmed by their own highlight shadow.
+  - `guide-overlay`: 20000
+  - `guide-highlight`: 20001
+  - `guide-content`: 20002
 
-### 3. Site Guide (First-time Visitor Tour)
-- **Interactive Tour:** Added a "Site Guide" that uses speech bubbles and a helper icon to explain the site.
-- **Sections covered:** It points out where to find the latest Blog/News, how to Subscribe, how to watch the latest YouTube video, and how to use the Theme Toggle.
-- **Save State:** The guide only appears automatically on the first visit (uses `localStorage`).
+### 3. Smart Positioning Logic
+- Redesigned the `repositionGuide` function in `index.html`.
+- The guide bubble now aggressively positions itself to the **right** (or left) of the target element, rather than centering on it.
+- This ensures that large content like the **YouTube video section** is never obscured by the guide.
 
-## How to use
-From now on, whenever you want to update your site or show a new video:
-1.  Run **`publish_site.bat`**.
-2.  It will automatically detect your latest YouTube video and update the home page for you!
+## Verification
+- GitHub update: [main 9830474]
+- Verified that `localStorage` defaults to dark.
+- Verified that the guide bubble stays clear of the YouTube iframe.
 
-## Verification Results
-- **Cleanup:** Verified that index files are now empty [announcements.js](file:///c:/Users/maiku/.gemini/antigravity/announcements.js).
-- **Automation:** Verified that `index.html` now contains the latest video:
-```html
-<iframe src="https://www.youtube.com/embed/kKWYwJGSnpM" allowfullscreen></iframe>
-```
-*(ID `kKWYwJGSnpM` was fetched automatically during the process)*
+### How to Confirm
+1. Open the site (Wait a few minutes for GH Pages to sync).
+2. Press `Ctrl + F5` to clear cache.
+3. Observe that the site starts in dark mode.
+4. Watch the guide and notice the bubble stays to the side of the highlighted sections.

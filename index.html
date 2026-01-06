@@ -65,16 +65,15 @@
     </main>
 
     <!-- サイトガイドのテンプレート -->
-    <div id="guide-overlay" class="guide-overlay">
-        <div class="guide-content">
-            <span class="guide-character">💡</span>
-            <div id="guide-bubble" class="speech-bubble">
-                ここはテストメッセージです
-            </div>
-            <div class="guide-btns">
-                <button id="guide-skip" class="guide-btn guide-btn-secondary">スキップ</button>
-                <button id="guide-next" class="guide-btn guide-btn-primary">次へ</button>
-            </div>
+    <div id="guide-overlay" class="guide-overlay"></div>
+    <div id="guide-content" class="guide-content">
+        <span class="guide-character">💡</span>
+        <div id="guide-bubble" class="speech-bubble">
+            ここはテストメッセージです
+        </div>
+        <div class="guide-btns">
+            <button id="guide-skip" class="guide-btn guide-btn-secondary">スキップ</button>
+            <button id="guide-next" class="guide-btn guide-btn-primary">次へ</button>
         </div>
     </div>
 
@@ -136,13 +135,14 @@
             if (localStorage.getItem('guideShown')) return;
 
             const overlay = document.getElementById('guide-overlay');
+            const content = document.getElementById('guide-content');
             overlay.classList.add('active');
+            content.classList.add('active');
             showStep(0);
         }
 
         function showStep(index) {
-            const overlay = document.getElementById('guide-overlay');
-            const content = overlay.querySelector('.guide-content');
+            const content = document.getElementById('guide-content');
             const bubble = document.getElementById('guide-bubble');
             const nextBtn = document.getElementById('guide-next');
             const step = guideSteps[index];
@@ -163,6 +163,7 @@
                 }
             } else {
                 // ターゲットがない場合は画面中央
+                content.style.position = 'fixed';
                 content.style.top = '50%';
                 content.style.left = '50%';
                 content.style.transform = 'translate(-50%, -50%)';
@@ -175,11 +176,13 @@
         function repositionGuide(targetEl, content) {
             const rect = targetEl.getBoundingClientRect();
             const contentRect = content.getBoundingClientRect();
-            const padding = 30; // ターゲットとの距離
+            const padding = 40; // ターゲットとの距離を広めに確保
+
+            content.style.position = 'absolute';
 
             // 垂直位置：ターゲットの高さ中央付近に合わせる（基本は上寄り）
             let top = rect.top + window.scrollY + (rect.height / 2) - (contentRect.height / 2);
-            let arrowClass = ''; // 横に配置するので矢印は不要か、別のクラスを検討
+            let arrowClass = '';
 
             // 水平位置：ターゲットの「右側」に配置
             let left = rect.right + window.scrollX + padding;
@@ -188,13 +191,12 @@
             if (left + contentRect.width > window.innerWidth - 20) {
                 left = rect.left + window.scrollX - contentRect.width - padding;
 
-                // 左側にも入り切らない場合（画面が狭い）は、上下に避ける
+                // 左右どちらにも入り切らない場合は、上下に避ける
                 if (left < 10) {
                     left = rect.left + window.scrollX + (rect.width / 2) - (contentRect.width / 2);
                     top = rect.top + window.scrollY - contentRect.height - padding;
                     arrowClass = 'guide-arrow-down';
 
-                    // 上に入り切らない場合は下
                     if (rect.top < contentRect.height + padding + 50) {
                         top = rect.bottom + window.scrollY + padding;
                         arrowClass = 'guide-arrow-up';
@@ -202,9 +204,16 @@
                 }
             }
 
-            // 最終的な画面内への収まり調整（上下）
+            // 最終的な画面内への収まり調整
             const headerHeight = 80;
             if (top < window.scrollY + headerHeight) top = window.scrollY + headerHeight;
+
+            // 画面左端からもはみ出さないようにガード
+            if (left < 10) left = 10;
+            // 画面右端からもはみ出さないようにガード
+            if (left + contentRect.width > window.innerWidth - 10) {
+                left = window.innerWidth - contentRect.width - 10;
+            }
 
             content.style.top = `${top}px`;
             content.style.left = `${left}px`;
@@ -226,7 +235,9 @@
 
         function closeGuide() {
             const overlay = document.getElementById('guide-overlay');
+            const content = document.getElementById('guide-content');
             overlay.classList.remove('active');
+            content.classList.remove('active');
             document.querySelectorAll('.guide-highlight').forEach(el => el.classList.remove('guide-highlight'));
             localStorage.setItem('guideShown', 'true');
         }
