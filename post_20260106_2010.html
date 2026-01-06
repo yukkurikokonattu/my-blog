@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブログ記事 - 携帯がぶっ壊れました</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="progress-container">
+        <div id="scroll-progress" class="progress-bar"></div>
+    </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">ホーム</a></li>
+                <li><a href="announcements.html">お知らせ</a></li>
+                <li><a href="blog.html">ブログ</a></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
+                <span id="theme-icon">☀️</span>
+            </button>
+        </div>
+    </nav>
+    <main class="container fade-in">
+        <h1 id="post-title" class="text-outline">携帯がぶっ壊れました</h1>
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+            <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
+            <span id="reading-time" class="reading-time"></span>
+        </div>
+        <details open>
+            <summary>記事内容</summary>
+            <div class="post-content" id="post-content">
+                <!-- 本文をここに記入 -->
+                <p>えっと、ベランダの端に携帯をおいてたら、自分の方に携帯落っこちて画面終了ｗ</p>
+                <p>親にガチギレ...明日誕生日なのに携帯壊れるとかついてなさすぎだろ。</p>
+                <p>さらに明日学校....."マジでついてない,,悲しい.....しかもデータ全部消えるみたい</p>
+                <p>まぁ写真のデータのバックアップは取ってある</p>
+                <p>とりまぴえんってことですね！それでは！</p>
+            </div>
+        </details>
+
+        <!-- Recent Posts Section -->
+        <section class="recent-posts-section">
+            <h2 class="text-outline" style="font-size: 1.3rem;">最近の投稿</h2>
+            <div id="recent-posts-grid" class="recent-posts-grid">
+                <!-- Posts will be loaded here -->
+            </div>
+        </section>
+
+        <div style="margin-top: 3rem; text-align: center;">
+            <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
+                ブログ一覧に戻る</a>
+        </div>
+    </main>
+    <script src="blog-posts.js"></script>
+    <script>
+        // Theme logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const root = document.documentElement;
+
+        function updateThemeUI(theme) {
+            themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+
+        updateThemeUI(root.getAttribute('data-theme'));
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        });
+
+        // Insert current date/time in YY/MM/DD/HH:MM format
+        const now = new Date();
+        const pad = n => n.toString().padStart(2, '0');
+        const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
+        document.getElementById('post-date').textContent = formatted;
+
+        // --- New Features Logic ---
+
+        // 1. Reading Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = window.scrollY || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (height <= 0) return;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById('scroll-progress');
+            if (bar) bar.style.width = Math.min(Math.max(scrolled, 0), 100) + "%";
+        });
+
+        // 2. Automated Reading Time
+        const content = document.getElementById('post-content').textContent;
+        const textLength = content.replace(/\s+/g, '').length;
+        const readingTime = Math.ceil(textLength / 500); // Average 500 chars/min
+        document.getElementById('reading-time').textContent = `⏱️ 約 ${readingTime} 分で読めます`;
+
+        // 3. Load Recent Posts
+        function loadRecentPosts() {
+            const grid = document.getElementById('recent-posts-grid');
+            if (!grid || typeof blogPosts === 'undefined') return;
+
+            const currentPath = window.location.pathname.split('/').pop();
+            const otherPosts = blogPosts
+                .filter(post => post.url !== currentPath)
+                .slice(0, 2); // Show top 2 recent other posts
+
+            otherPosts.forEach(post => {
+                const card = document.createElement('a');
+                card.href = post.url;
+                card.className = 'recent-post-mini-card';
+                card.innerHTML = `
+                    <h4>${post.title}</h4>
+                    <span class="mini-date">${post.date}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        window.addEventListener('DOMContentLoaded', loadRecentPosts);
+    </script>
+</body>
+
+</html>
