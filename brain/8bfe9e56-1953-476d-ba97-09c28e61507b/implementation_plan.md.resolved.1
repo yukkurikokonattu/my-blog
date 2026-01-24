@@ -1,0 +1,37 @@
+# Comments and 404 Page Implementation Plan
+
+## Goal Description
+Add a comment section to blog posts (specifically excluding other content types if needed, based on "only blogs") and create a styled custom 404 page.
+
+## User Review Required
+> [!IMPORTANT]
+> **Comment System Choice**: I am proposing **Giscus** for the comment section.
+> - **Why**: It works perfectly with static sites hosted on GitHub Pages (which you are using/preparing for). It stores comments in GitHub Discussions, so it's free, no ads, and secure.
+> - **Requirement**: It requires a GitHub repository. You will need to install the Giscus app on your repo and get a `data-repo-id` and `data-category-id`. I will add the code with placeholders, and you can fill them in later.
+
+## Proposed Changes
+
+### 404 Page
+#### [NEW] [404.html](file:///c:/Users/maiku/.gemini/antigravity/404.html)
+- A new HTML file styled with the existing [style.css](file:///c:/Users/maiku/.gemini/antigravity/style.css).
+- **Custom Image**: Will display a custom 404 image created by the user. I will create an `images` directory and link to `images/404.png`.
+- Will feature a playful/cool error message.
+- Includes a button to return to the homepage.
+- Supports the existing Light/Dark theme toggle.
+
+#### [NEW] Directory: `images/`
+- Create a directory to store the custom 404 image and other future assets.
+
+### Blog Comments
+#### [MODIFY] [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html)
+- Add a `<section id="comments">` below the article content but before the footer/recent posts.
+- Insert the Giscus script tag.
+
+#### [MODIFY] Existing Blog Posts
+- I will apply the comment section addition to existing `post_*.html` files so they are consistent with the new template.
+
+## Verification Plan
+
+### Manual Verification
+1.  **404 Page**: Open `404.html` directly in the browser to ensure it looks good and the theme toggle works.
+2.  **Comments**: Create a test post using [create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1) and verify the comment section placeholder appears.

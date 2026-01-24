@@ -18,9 +18,9 @@
     <div class='progress-container'>
         <div id='scroll-progress' class='progress-bar'></div>
     </div>
-    
+
     </div>
-    
+
     </div>
     <nav class="navbar">
         <div class="nav-container">
@@ -36,23 +36,24 @@
     </nav>
     <main class="container fade-in">
         <h1 id="post-title" class="text-outline">テスト投稿(なんか不具合があるため)</h1>
-                        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
+        <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
             <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
             <span id="reading-time" class="reading-time"></span>
         </div>
         <details open>
             <summary>記事内容</summary>
-            <div class="post-content" >
+            <div class="post-content">
                 <!-- 本文をここに記入 -->
                 <p>テスト投稿です。</p>
             </div>
         </details>
 
-        
 
-                
 
-                <section class="recent-posts-section">
+
+
+
+        <section class="recent-posts-section">
             <h2 class="text-outline recent-section-title" style="font-size: 1.3rem;"></h2>
             <div id="recent-posts-grid" class="recent-posts-grid"></div>
         </section>
@@ -88,12 +89,12 @@
         const formatted = `${pad(now.getFullYear() % 100)}/${pad(now.getMonth() + 1)}/${pad(now.getDate())}/${pad(now.getHours())}:${pad(now.getMinutes())}`;
         document.getElementById('post-date').textContent = formatted;
     </script>
-    
-    
+
+
     <script src="blog-posts.js"></script>
     <script>
         // --- Premium Features Logic ---
-        (function() {
+        (function () {
             // 1. Progress Bar
             window.addEventListener('scroll', () => {
                 const winScroll = window.scrollY || document.documentElement.scrollTop;
@@ -119,7 +120,7 @@
                 const gridId = isPost ? 'recent-posts-grid' : 'recent-announcements-grid';
                 const grid = document.getElementById(gridId);
                 const data = isPost ? window.blogPosts : window.announcements;
-                
+
                 // Set Title via Unicode Escape
                 const titleEl = document.querySelector('.recent-section-title');
                 if (titleEl) titleEl.textContent = isPost ? '\u6700\u8fd1\u306e\u6295\u7a3f' : '\u6700\u65b0\u306e\u304a\u77e5\u3089\u305b';

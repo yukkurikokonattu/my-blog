@@ -1,0 +1,27 @@
+# Comments Implementation Plan
+
+## Goal Description
+Add a comment section to blog posts using Giscus. The 404 page request has been cancelled.
+
+## User Review Required
+> [!IMPORTANT]
+> **Comment System Choice**: I am using **Giscus**.
+> - **Action Required**: You currently need to set up Giscus on your GitHub repository (install the app, enable discussions).
+> - I will add the code with placeholders (`data-repo="[ENTER REPO HERE]"`, `data-repo-id="..."`, `data-category="..."`, `data-category-id="..."`).
+> - **IMPORTANT**: Until you fill in these IDs in [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) (and existing posts), the comment section will show an error or configurations guide.
+
+## Proposed Changes
+
+### Blog Comments
+#### [MODIFY] [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html)
+- Add a `<section id="comments">` container.
+- Insert the Giscus script tag with generic placeholders.
+- Style: Use `data-theme="preferred_color_scheme"` to match the user's system or basic dark/light setting.
+
+#### [MODIFY] Existing Blog Posts
+- I will search for all `post_*.html` files.
+- I will inject the same comment section code into them, typically before the "Recent Posts" or "Footer" section.
+
+## Verification Plan
+1.  **Template Check**: Create a dummy post to verify the script is present.
+2.  **Existing Post Check**: Open a random existing post to ensure the section was added correctly.

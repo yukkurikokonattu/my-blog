@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Firebase Authenticationを使用したアカウントシステムの実装計画。ログイン・会員登録機能、会員限定ページ、および認証状態に応じたナビゲーション表示の実装を含みます。",
+  "updatedAt": "2026-01-16T07:00:47.173502500Z"
+}

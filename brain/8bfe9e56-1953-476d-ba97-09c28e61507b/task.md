@@ -1,0 +1,3 @@
+- [x] Revert Comment Section <!-- id: 11 -->
+    - [x] Remove from `post_template.html` <!-- id: 12 -->
+    - [x] Remove from existing blog posts (`post_*.html`) <!-- id: 13 -->
