@@ -35,6 +35,40 @@ Copy-Item $templatePath $nextFile
 $content = Get-Content $nextFile -Encoding UTF8
 $content = $content -replace "記事タイトル", $title
 $content = $content -replace "<title>ブログ記事 - タイトル</title>", "<title>ブログ記事 - $title</title>"
+
+# --- Image Upload Logic ---
+$response = Read-Host "画像を添付しますか？ (Y/N)"
+if ($response -eq "Y" -or $response -eq "y") {
+    Add-Type -AssemblyName System.Windows.Forms
+    $fileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
+        Multiselect = $true
+        Filter      = "Images (*.png;*.jpg;*.jpeg;*.gif;*.webp)|*.png;*.jpg;*.jpeg;*.gif;*.webp"
+        Title       = "画像を選択してください"
+    }
+
+    if ($fileBrowser.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
+        $imageDirName = "assets/images/posts/$dateStrForFile"
+        $absImageDir = Join-Path (Get-Location) $imageDirName
+        New-Item -ItemType Directory -Force -Path $absImageDir | Out-Null
+        
+        $imageTags = ""
+        foreach ($file in $fileBrowser.FileNames) {
+            $fileName = Split-Path $file -Leaf
+            $destPath = Join-Path $absImageDir $fileName
+            Copy-Item $file $destPath
+            
+            # Relative path for HTML
+            $relPath = "$imageDirName/$fileName"
+            $imageTags += "`n                <img src=""$relPath"" alt=""$fileName"">"
+        }
+        
+        # Inject tags
+        $content = $content -replace "<!-- Media Insertion Point -->", "<!-- Media Insertion Point -->$imageTags"
+        Write-Host "画像を追加しました: $imageDirName"
+    }
+}
+# --------------------------
+
 $content | Set-Content $nextFile -Encoding UTF8
 
 # 5. Update index

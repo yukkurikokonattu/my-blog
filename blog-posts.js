@@ -1,5 +1,10 @@
 ﻿const blogPosts = [
     {
+        title: "kokonnrr",
+        url: "post_20260201_1721.html",
+        date: "26/02/01/17:21"
+    },
+    {
         title: "携帯帰ってきました！！",
         url: "post_20260124_1134.html",
         date: "26/01/24/11:34"

@@ -1,0 +1,29 @@
+# Enable Image and Video Support in Blog and Announcements
+
+The goal is to allow the user to easily insert images and videos into their blog posts and announcements.
+
+## User Review Required
+- **Video Hosting**: Do you want to upload video files directly to the site, or embed from YouTube? (Assumed: YouTube is preferred for bandwidth, but local video support might be needed). I will provide support for both if possible, or focus on responsive YouTube embeds and simple image tags.
+- **Workflow**: Since you currently edit HTML files, I will likely add "snippets" or commented-out sections in the templates that you can uncomment and fill in.
+
+## Proposed Changes
+
+### CSS
+- Update `assets/css/style.css` (or `index.css`) to add classes for:
+    - Responsive image containers (e.g., `.post-image`).
+    - Responsive video containers (e.g., `.video-container` for 16:9 embeds).
+
+### Templates
+- Modify [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) and [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html) to include:
+    - A commented-out example of an `<img>` tag with the new class.
+    - A commented-out example of a YouTube iframe with the responsive wrapper.
+    - A commented-out example of a generic video tag.
+
+### Scripts (Optional)
+- If [create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1) exists, I might add a prompt, but template modification is usually safer and more flexible for manual editing.
+
+## Verification Plan
+### Manual Verification
+- Create a dummy blog post using the new template.
+- Uncomment the snippets and replace placeholders with actual URLs.
+- Open the file in the browser to ensure images scale correctly and videos are responsive.

@@ -237,6 +237,17 @@ summary {
   margin: 0.5rem 0;
 }
 
+/* Post Media Styles */
+.post-content img,
+.post-content video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  margin: 1.5rem 0;
+  display: block;
+}
+
 /* Search Bar Styles */
 .search-container {
   margin-bottom: 2rem;

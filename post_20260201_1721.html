@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>お知らせ - タイトル</title>
+    <title>ブログ記事 - kokonnrr</title>
     <link rel="stylesheet" href="style.css">
     <script>
         (function () {
@@ -22,7 +22,7 @@
         <div class="nav-container">
             <ul>
                 <li><a href="index.html">ホーム</a></li>
-                <li><a href="announcements.html" class="active">お知らせ</a></li>
+                <li><a href="announcements.html">お知らせ</a></li>
                 <li><a href="blog.html">ブログ</a></li>
             </ul>
             <button class="theme-toggle" id="theme-toggle" title="テーマを切り替え">
@@ -31,36 +31,49 @@
         </div>
     </nav>
     <main class="container fade-in">
-        <h1 id="post-title" class="text-outline">記事タイトル</h1>
+        <h1 id="post-title" class="text-outline">kokonnrr</h1>
         <div style="display: flex; align-items: center; margin-bottom: 0.8rem;">
             <p id="post-date" class="post-date" style="margin-bottom: 0;"></p>
             <span id="reading-time" class="reading-time"></span>
         </div>
         <details open>
-            <summary>お知らせ内容</summary>
+            <summary>記事内容</summary>
             <div class="post-content" id="post-content">
                 <!-- 本文をここに記入 -->
-                <p>ここにお知らせ本文が入ります。</p>
+                <p>テスト記事</p>
 
                 <!-- Media Insertion Point -->
+                <img src="assets/images/posts/20260201_1721/Gemini_Generated_Image_2pil632pil632pil.png"
+                    alt="Gemini_Generated_Image_2pil632pil632pil.png">
                 <!-- 画像や動画はここに自動挿入、または手動で追加してください -->
             </div>
         </details>
 
-        <!-- Recent Announcements Section -->
+        <!-- Comments Section -->
+        <section class="comments-section" style="margin-top: 3rem;">
+            <h2 class="text-outline" style="font-size: 1.3rem;">コメント</h2>
+            <script src="https://giscus.app/client.js" data-repo="[ENTER REPO HERE]" data-repo-id="[ENTER REPO ID HERE]"
+                data-category="[ENTER CATEGORY NAME HERE]" data-category-id="[ENTER CATEGORY ID HERE]"
+                data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0"
+                data-input-position="bottom" data-theme="preferred_color_scheme" data-lang="ja" crossorigin="anonymous"
+                async>
+                </script>
+        </section>
+
+        <!-- Recent Posts Section -->
         <section class="recent-posts-section">
-            <h2 class="text-outline" style="font-size: 1.3rem;">最新のお知らせ</h2>
-            <div id="recent-announcements-grid" class="recent-posts-grid">
-                <!-- Announcements will be loaded here -->
+            <h2 class="text-outline" style="font-size: 1.3rem;">最近の投稿</h2>
+            <div id="recent-posts-grid" class="recent-posts-grid">
+                <!-- Posts will be loaded here -->
             </div>
         </section>
 
         <div style="margin-top: 3rem; text-align: center;">
-            <a href="announcements.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
-                お知らせ一覧に戻る</a>
+            <a href="blog.html" class="subscribe-btn" style="text-decoration: none; display: inline-block;">←
+                ブログ一覧に戻る</a>
         </div>
     </main>
-    <script src="announcements.js"></script>
+    <script src="blog-posts.js"></script>
     <script>
         // Theme logic
         const themeToggle = document.getElementById('theme-toggle');
@@ -102,31 +115,31 @@
         // 2. Automated Reading Time
         const content = document.getElementById('post-content').textContent;
         const textLength = content.replace(/\s+/g, '').length;
-        const readingTime = Math.ceil(textLength / 500);
+        const readingTime = Math.ceil(textLength / 500); // Average 500 chars/min
         document.getElementById('reading-time').textContent = `⏱️ 約 ${readingTime} 分で読めます`;
 
-        // 3. Load Recent Announcements
-        function loadRecentAnnouncements() {
-            const grid = document.getElementById('recent-announcements-grid');
-            if (!grid || typeof announcements === 'undefined') return;
+        // 3. Load Recent Posts
+        function loadRecentPosts() {
+            const grid = document.getElementById('recent-posts-grid');
+            if (!grid || typeof blogPosts === 'undefined') return;
 
             const currentPath = window.location.pathname.split('/').pop();
-            const otherNews = announcements
-                .filter(item => item.url !== currentPath)
-                .slice(0, 2);
+            const otherPosts = blogPosts
+                .filter(post => post.url !== currentPath)
+                .slice(0, 2); // Show top 2 recent other posts
 
-            otherNews.forEach(item => {
+            otherPosts.forEach(post => {
                 const card = document.createElement('a');
-                card.href = item.url;
+                card.href = post.url;
                 card.className = 'recent-post-mini-card';
                 card.innerHTML = `
-                    <h4>${item.title}</h4>
-                    <span class="mini-date">${item.date}</span>
+                    <h4>${post.title}</h4>
+                    <span class="mini-date">${post.date}</span>
                 `;
                 grid.appendChild(card);
             });
         }
-        window.addEventListener('DOMContentLoaded', loadRecentAnnouncements);
+        window.addEventListener('DOMContentLoaded', loadRecentPosts);
     </script>
 </body>
 

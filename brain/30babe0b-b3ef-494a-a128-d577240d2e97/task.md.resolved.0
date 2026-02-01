@@ -1,0 +1,16 @@
+# Enabling Image and Video Support
+
+- [ ] Analyze current codebase and templates <!-- id: 0 -->
+    - [ ] Check [post_template.html](file:///c:/Users/maiku/.gemini/antigravity/post_template.html) and [news_template.html](file:///c:/Users/maiku/.gemini/antigravity/news_template.html)
+    - [ ] Check [create-post.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-post.ps1) (if exists) and [create-announcement.ps1](file:///c:/Users/maiku/.gemini/antigravity/create-announcement.ps1)
+    - [ ] Check [update-youtube-video.ps1](file:///c:/Users/maiku/.gemini/antigravity/update-youtube-video.ps1) to see what it does
+- [ ] Design solution for embedding media <!-- id: 1 -->
+    - [ ] Determine best HTML structure for responsive images and videos (Youtube embeds vs local video)
+    - [ ] Create CSS for media containers
+- [ ] Implement changes <!-- id: 2 -->
+    - [ ] Update templates with commented-out examples or easy-to-copy snippets
+    - [ ] Update CSS file (likely `index.css` or `blog.css`)
+    - [ ] (Optional) Update creation scripts if automation is possible/desired
+- [ ] Verify functionality <!-- id: 3 -->
+    - [ ] Create a test post with image and video
+    - [ ] Verify responsive design and styling
