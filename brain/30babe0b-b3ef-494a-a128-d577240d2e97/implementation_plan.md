@@ -9,16 +9,23 @@ The goal is to allow the user to easily insert images and videos into their blog
 ## Proposed Changes
 
 ### CSS
-- Update `style.css` to add:
-    - `.post-content img, .post-content video`: Ensure they are responsive (`max-width: 100%`, `height: auto`), have rounded corners (`border-radius`), and a subtle shadow.
-    - `.video-container`: Ensure the existing class works well within the post content.
+- Update `style.css`:
+    - Improve `<details>` and `<summary>` styling to look like a button (`.spoiler-details`, `.spoiler-summary`).
+    - Verify `.post-content img` has `max-width: 100%` and `object-fit: contain` to ensure images fit the screen.
 
 ### Scripts (Automation)
-- Modify `create-post.ps1` and `create-announcement.ps1` to:
-    1.  **Ask**: "画像を添付しますか？ (Y/N)"
-    2.  **Select**: If Yes, open a file selection dialog (multiple files allowed).
-    3.  **Copy**: Create a folder `assets/images/posts/YYYYMMDD_HHmm/` and copy selected images there.
-    4.  **Inject**: Automatically append `<img src="...">` tags to the content of the new HTML file.
+- Modify `create-post.ps1` and `create-announcement.ps1`:
+    - Wrap the injected `<img>` tags in a `<details>` block.
+    - Structure:
+      ```html
+      <details class="media-accordion">
+          <summary>画像を表示する</summary>
+          <img src="..." ...>
+      </details>
+      ```
+
+### Templates
+- Update comments in `post_template.html` and `news_template.html` to show the `<details>` wrapper example.
 
 ### Templates
 - Modify `post_template.html` and `news_template.html`:

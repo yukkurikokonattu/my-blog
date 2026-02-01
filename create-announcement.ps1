@@ -41,8 +41,8 @@ if ($response -eq "Y" -or $response -eq "y") {
     Add-Type -AssemblyName System.Windows.Forms
     $fileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
         Multiselect = $true
-        Filter = "Images (*.png;*.jpg;*.jpeg;*.gif;*.webp)|*.png;*.jpg;*.jpeg;*.gif;*.webp"
-        Title = "画像を選択してください"
+        Filter      = "Images (*.png;*.jpg;*.jpeg;*.gif;*.webp)|*.png;*.jpg;*.jpeg;*.gif;*.webp"
+        Title       = "画像を選択してください"
     }
 
     if ($fileBrowser.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
@@ -59,7 +59,8 @@ if ($response -eq "Y" -or $response -eq "y") {
             
             # Relative path for HTML
             $relPath = "$imageDirName/$fileName"
-            $imageTags += "`n                <img src=""$relPath"" alt=""$fileName"">"
+            # Wrap in details for collapsible view
+            $imageTags += "`n                <details class=""media-accordion"">`n                    <summary>画像を表示する</summary>`n                    <img src=""$relPath"" alt=""$fileName"">`n                </details>"
         }
         
         # Inject tags

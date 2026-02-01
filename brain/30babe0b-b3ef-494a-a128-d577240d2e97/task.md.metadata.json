@@ -1,6 +1,6 @@
 {
   "artifactType": "ARTIFACT_TYPE_TASK",
-  "summary": "Marked design tasks as complete and implementation tasks as in-progress.",
-  "updatedAt": "2026-02-01T08:20:27.519183600Z",
-  "version": "2"
+  "summary": "Added tasks for implementing collapsible images and resize fixes.",
+  "updatedAt": "2026-02-01T08:25:43.081417400Z",
+  "version": "3"
 }

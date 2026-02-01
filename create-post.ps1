@@ -59,7 +59,8 @@ if ($response -eq "Y" -or $response -eq "y") {
             
             # Relative path for HTML
             $relPath = "$imageDirName/$fileName"
-            $imageTags += "`n                <img src=""$relPath"" alt=""$fileName"">"
+            # Wrap in details for collapsible view
+            $imageTags += "`n                <details class=""media-accordion"">`n                    <summary>画像を表示する</summary>`n                    <img src=""$relPath"" alt=""$fileName"">`n                </details>"
         }
         
         # Inject tags

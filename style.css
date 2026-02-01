@@ -248,6 +248,47 @@ summary {
   display: block;
 }
 
+/* Collapsible Media Styles */
+.media-accordion {
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.media-accordion summary {
+  background: var(--card-bg);
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  /* Hide default triangle in some browsers */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.media-accordion summary:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.media-accordion[open] summary {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.media-accordion img {
+  margin: 0;
+  /* Remove default margin inside accordion */
+  border-radius: 0 0 8px 8px;
+  width: 100%;
+  /* Force width to fit container */
+  max-height: 80vh;
+  /* Prevent it from being too tall */
+  object-fit: contain;
+  /* Keep aspect ratio */
+}
+
 /* Search Bar Styles */
 .search-container {
   margin-bottom: 2rem;
