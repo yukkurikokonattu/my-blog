@@ -1,0 +1,13 @@
+
+- [ ] Troubleshoot `publish_site.bat` failure <!-- id: 0 -->
+    - [/] Investigate `update-blog-index.ps1` <!-- id: 1 -->
+    - [x] Investigate `update-youtube-video.ps1` <!-- id: 2 -->
+    - [x] Check Git status and connectivity <!-- id: 3 -->
+    - [x] Notify user about findings <!-- id: 4 -->
+- [ ] Reinstall and Setup Git <!-- id: 5 -->
+    - [x] Install Git (via winget or manual) <!-- id: 6 -->
+    - [/] Verify Git installation (manual path check) <!-- id: 7 -->
+    - [/] Check for existing author info in git log <!-- id: 7.2 -->
+    - [x] Configure Git (Name/Email) <!-- id: 8 -->
+    - [/] Verify Repository Connection <!-- id: 9 -->
+    - [ ] Test `publish_site.bat` <!-- id: 10 -->

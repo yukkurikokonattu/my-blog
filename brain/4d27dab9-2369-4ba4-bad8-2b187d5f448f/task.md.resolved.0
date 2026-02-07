@@ -1,0 +1,6 @@
+
+- [ ] Troubleshoot [publish_site.bat](file:///c:/Users/maiku/.gemini/antigravity/publish_site.bat) failure <!-- id: 0 -->
+    - [/] Investigate [update-blog-index.ps1](file:///c:/Users/maiku/.gemini/antigravity/update-blog-index.ps1) <!-- id: 1 -->
+    - [ ] Investigate [update-youtube-video.ps1](file:///c:/Users/maiku/.gemini/antigravity/update-youtube-video.ps1) <!-- id: 2 -->
+    - [ ] Check Git status and connectivity <!-- id: 3 -->
+    - [ ] Fix identified issues <!-- id: 4 -->
