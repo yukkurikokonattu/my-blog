@@ -9,5 +9,6 @@
     - [/] Verify Git installation (manual path check) <!-- id: 7 -->
     - [/] Check for existing author info in git log <!-- id: 7.2 -->
     - [x] Configure Git (Name/Email) <!-- id: 8 -->
-    - [/] Verify Repository Connection <!-- id: 9 -->
-    - [ ] Test `publish_site.bat` <!-- id: 10 -->
+    - [x] Verify Repository Connection <!-- id: 9 -->
+    - [x] Test `publish_site.bat` (simulated) <!-- id: 10 -->
+    - [x] Notify user to restart terminal <!-- id: 11 -->
